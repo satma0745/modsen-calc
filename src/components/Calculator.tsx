@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 
-import { useDisplay, useHistory } from '../hooks'
+import { useDisplay, useHistory } from '@hooks'
 
 import Display from './Display'
 import Keypad from './Keypad'
