@@ -28,10 +28,14 @@ const keypad = [
   ['.', '(', '0', ')', 'CE'],
 ].flatMap((x) => x)
 
-const Keypad: FC = () => (
+interface Props {
+  onKeyPressed: (key: string) => void
+}
+
+const Keypad: FC<Props> = ({ onKeyPressed }) => (
   <Grid>
     {keypad.map((label) => (
-      <Button key={label} onClick={() => console.log(label)}>
+      <Button key={label} onClick={() => onKeyPressed(label)}>
         {label}
       </Button>
     ))}

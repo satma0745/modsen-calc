@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 
-import { useDisplay, useHistory } from '@hooks'
+import useCalculator from '@hooks/useCalculator'
 
 import Display from './Display'
 import Keypad from './Keypad'
@@ -22,15 +22,14 @@ const SectionSeparator = styled.hr`
 `
 
 const Calculator: FC = () => {
-  const display = useDisplay()
-  const history = useHistory()
+  const { display, history, onKeyPressed } = useCalculator()
 
   return (
     <Surface>
       <Section scale={1.8}>
         <Display content={display} />
         <hr />
-        <Keypad />
+        <Keypad onKeyPressed={onKeyPressed} />
       </Section>
 
       <SectionSeparator />
