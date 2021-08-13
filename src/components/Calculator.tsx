@@ -22,14 +22,14 @@ const SectionSeparator = styled.hr`
 `
 
 const Calculator: FC = () => {
-  const { display, history, onKeyPressed } = useCalculator()
+  const { display, history, handleInput } = useCalculator()
 
   return (
     <Surface>
       <Section scale={1.8}>
         <Display content={display} />
         <hr />
-        <Keypad onKeyPressed={onKeyPressed} />
+        <Keypad onKeyPressed={handleInput} />
       </Section>
 
       <SectionSeparator />

@@ -1,27 +1,21 @@
-import { useCallback, useState } from 'react'
+import { useEffect, useState } from 'react'
 
-interface ReturnType {
-  value: string
-  push: (s: string) => void
-  clear: () => void
-}
+import { subscribe } from '@core/inputs'
+import prettify from './prettify'
 
-const useDisplay = (): ReturnType => {
+const useDisplay = (): string => {
   const [value, setValue] = useState('')
 
-  const push = useCallback(
-    (symbol: string) => {
-      setValue((oldValue) => oldValue + symbol)
-    },
+  useEffect(
+    () =>
+      subscribe((inputs) => {
+        const pretty = prettify(inputs)
+        setValue(pretty)
+      }),
     [setValue],
   )
 
-  const clear = useCallback(() => {
-    setValue('')
-  }, [setValue])
-
-  const displayedValue = value === '' ? '0' : value
-  return { value: displayedValue, push, clear }
+  return value === '' ? '0' : value
 }
 
 export default useDisplay
