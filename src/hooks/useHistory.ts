@@ -3,7 +3,7 @@ import prettify from './prettify'
 
 interface ReturnType {
   value: string[]
-  push: (expression: string[], result: string) => void
+  push: (_: string[], __: string) => void
 }
 
 const useHistory = (): ReturnType => {

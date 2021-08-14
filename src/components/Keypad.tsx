@@ -29,7 +29,7 @@ const keypad = [
 ].flatMap((x) => x)
 
 interface Props {
-  onKeyPressed: (key: string) => void
+  onKeyPressed: (_: string) => void
 }
 
 const Keypad: FC<Props> = ({ onKeyPressed }) => (

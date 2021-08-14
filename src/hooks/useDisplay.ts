@@ -1,21 +1,37 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import { subscribe } from '@core/inputs'
 import prettify from './prettify'
 
-const useDisplay = (): string => {
-  const [value, setValue] = useState('')
+interface ReturnType {
+  value: string
+  onAnswer: (_: string) => void
+}
+
+const useDisplay = (): ReturnType => {
+  const [inputs, setInputs] = useState<string[]>([])
+  const [answer, setAnswer] = useState<string | null>(null)
 
   useEffect(
     () =>
-      subscribe((inputs) => {
-        const pretty = prettify(inputs)
-        setValue(pretty)
+      subscribe((changedInputs) => {
+        const newInputs = Array.from(changedInputs)
+        setInputs(newInputs)
       }),
-    [setValue],
+    [setInputs],
   )
 
-  return value === '' ? '0' : value
+  const display = useMemo(() => {
+    if (inputs.length === 0 && answer !== null) {
+      return answer
+    } else if (inputs.length === 0) {
+      return '0'
+    } else {
+      return prettify(inputs)
+    }
+  }, [inputs, answer])
+
+  return { value: display, onAnswer: setAnswer }
 }
 
 export default useDisplay

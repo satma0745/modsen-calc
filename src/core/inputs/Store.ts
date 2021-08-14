@@ -1,5 +1,5 @@
 interface NotificationCallback<State> {
-  (state: State): void
+  (_: State): void
 }
 
 abstract class Store<State> {
