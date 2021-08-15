@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import PageSwitch from '@pages'
 
-import Header from './Header'
+import { Header } from './layout'
 
 const App = styled.div`
   height: 100vh;

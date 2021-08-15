@@ -1,7 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-
-import { subscribe } from '@core/inputs'
-import prettify from './prettify'
+import { subscribe, prettify } from '@core/inputs'
 
 interface ReturnType {
   value: string

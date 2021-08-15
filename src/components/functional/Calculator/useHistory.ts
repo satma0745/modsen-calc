@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react'
-import prettify from './prettify'
+import { prettify } from '@core/inputs'
 
 interface ReturnType {
   value: string[]
@@ -11,7 +11,9 @@ const useHistory = (): ReturnType => {
 
   const push = useCallback(
     (expression: string[], result: string) => {
-      const record = `${prettify(expression)} = ${result}`
+      const pretty = prettify(expression)
+      const record = `${pretty} = ${result}`
+
       setHistory((oldHistory) => [...oldHistory, record])
     },
     [setHistory],

@@ -38,7 +38,6 @@ module.exports = {
       '~': path.resolve(__dirname, 'src/'),
       '@components': path.resolve(__dirname, 'src/components'),
       '@core': path.resolve(__dirname, 'src/core'),
-      '@hooks': path.resolve(__dirname, 'src/hooks'),
       '@pages': path.resolve(__dirname, 'src/pages'),
     },
   },

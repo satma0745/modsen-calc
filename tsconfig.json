@@ -16,8 +16,6 @@
       "@components/*": ["src/components/*"],
       "@core": ["src/core"],
       "@core/*": ["src/core/*"],
-      "@hooks": ["src/hooks"],
-      "@hooks/*": ["src/hooks/*"],
       "@pages": ["src/pages"],
       "@pages/*": ["src/pages/*"]
     }
