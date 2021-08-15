@@ -13,25 +13,25 @@
 ### Components
 
 - [ ] **Header** - Application header (with a list of pages).
-- [ ] **Calculator** - Logic root and data manager.
-- [ ] **Display** - Displays current expression and calculation result.
-- [ ] **History** - Displays a list of the previously computed expressions.
+- [x] **Calculator** - Logic root and data manager.
+- [x] **Display** - Displays current expression and calculation result.
+- [x] **History** - Displays a list of the previously computed expressions.
 - [ ] **ControlPanel** - Non-computational operations (e.g. show/hide history).
-- [ ] **Keypad** - Computational operations (operands and operators).
+- [x] **Keypad** - Computational operations (operands and operators).
 
 ![Component diagram](./docs/components.png)
 
 ### Required functionality
 
 #### Calculator
-- [ ] Addition
-- [ ] Subtraction
-- [ ] Multiplication
-- [ ] Division
-- [ ] Compute (equals)
-- [ ] Complex expressions
+- [x] Addition
+- [x] Subtraction
+- [x] Multiplication
+- [x] Division
+- [x] Compute (equals)
+- [x] Complex expressions
 - [ ] Controllable precision (3 by default)
-- [ ] Clear
+- [x] Clear
 
 #### History
 - [ ] Show/hide history
@@ -40,7 +40,7 @@
 
 #### Additional functionality
 
-- [ ] Support for short real numbers format within the range (0; 1): e.g. `.745` instead of `0.745`
+- [x] Support for short real numbers format within the range (0; 1): e.g. `.745` instead of `0.745`
 - [ ] Implement the modulus operation: `17 % 10 = 7`
 
 ### How the application should look
@@ -56,7 +56,7 @@ Settings page: ![Settings page layout](./docs/page-settings.png)
 - [ ] Implement 2 versions: one using *functional components* and the other using *class components*.
 - [ ] Error handling with *Error Boundaries*.
 - [ ] Dark and light theme using *styled-components*.
-- [ ] Import aliases.
+- [x] Import aliases.
 
 
 ## Tech stack
