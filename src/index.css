@@ -8,11 +8,4 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-}
-
-#root {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
 }

@@ -10,6 +10,7 @@ module.exports = {
   entry: './src/index.tsx',
   output: {
     path: `${__dirname}/dist/`,
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -28,6 +29,9 @@ module.exports = {
     ],
   },
   devtool: production ? undefined : 'source-map',
+  devServer: {
+    historyApiFallback: true,
+  },
   plugins: [new HtmlWebpackPlugin({ template: './public/index.html' }), new MiniCssExtractPlugin()],
   resolve: {
     alias: {
@@ -35,6 +39,7 @@ module.exports = {
       '@components': path.resolve(__dirname, 'src/components'),
       '@core': path.resolve(__dirname, 'src/core'),
       '@hooks': path.resolve(__dirname, 'src/hooks'),
+      '@pages': path.resolve(__dirname, 'src/pages'),
     },
   },
 }

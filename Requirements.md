@@ -12,7 +12,7 @@
 
 ### Components
 
-- [ ] **Header** - Application header (with a list of pages).
+- [x] **Header** - Application header (with a list of pages).
 - [x] **Calculator** - Logic root and data manager.
 - [x] **Display** - Displays current expression and calculation result.
 - [x] **History** - Displays a list of the previously computed expressions.

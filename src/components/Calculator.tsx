@@ -8,13 +8,21 @@ import Keypad from './Keypad'
 import History from './History'
 
 const Surface = styled.div`
+  padding: 1em;
+  border: 1px solid gray;
   display: flex;
   flex-direction: row;
 `
 
+interface SectionProps {
+  scale?: number
+  grow?: number
+}
+
 const Section = styled.section`
   padding: 1em 0;
-  font-size: ${({ scale }: { scale?: number }) => scale ?? 1}em;
+  font-size: ${({ scale }: SectionProps) => scale ?? 1}em;
+  flex-grow: ${({ grow }: SectionProps) => grow};
 `
 
 const SectionSeparator = styled.hr`
@@ -34,7 +42,7 @@ const Calculator: FC = () => {
 
       <SectionSeparator />
 
-      <Section>
+      <Section grow={1}>
         <History history={history} />
       </Section>
     </Surface>
