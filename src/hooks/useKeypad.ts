@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from 'react'
-import { push, pop, clear, subscribe } from '@core/inputs'
+import { push, subscribe, handler } from '@core/inputs'
 
 interface ReturnType {
   (_: string): void
 }
 
-interface OnEquals {
+interface Calculate {
   (_: string[]): number | false
 }
 
@@ -13,36 +13,19 @@ const answerToInput = (answer: number) => {
   return (answer >= 0 ? answer.toString() : `0-${Math.abs(answer)}`).split('')
 }
 
-const useKeypad = (onEquals: OnEquals): ReturnType => {
+const useKeypad = (calculate: Calculate): ReturnType => {
   const [inputs, setInputs] = useState<string[]>([])
   useEffect(() => subscribe(setInputs), [setInputs])
 
-  const handleInput = useCallback(
-    (input) => {
-      switch (input) {
-        case '=':
-          const answer = onEquals([...inputs])
+  const onEquals = useCallback(() => {
+    return calculate([...inputs])
+  }, [inputs])
 
-          clear()
+  const onAnswer = useCallback((answer: number) => {
+    answerToInput(answer).forEach(push)
+  }, [])
 
-          if (answer !== false) {
-            answerToInput(answer).forEach(push)
-          }
-
-          break
-        case 'C':
-          clear()
-          break
-        case 'CE':
-          pop()
-          break
-        default:
-          push(input)
-      }
-    },
-    [inputs],
-  )
-
+  const handleInput = useCallback(handler(onEquals, onAnswer), [onEquals, onAnswer])
   return handleInput
 }
 
