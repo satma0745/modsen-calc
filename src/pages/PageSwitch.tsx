@@ -2,7 +2,8 @@ import React, { FC } from 'react'
 import { Route, Switch } from 'react-router-dom'
 
 import SettingsPage from './SettingsPage'
-import CalculatorPage from './CalculatorPage'
+import FunctionalCalculatorPage from './FunctionalImplementationPage'
+import ClassCalculatorPage from './ClassImplementationPage'
 
 const PageSwitch: FC = () => (
   <Switch>
@@ -10,8 +11,12 @@ const PageSwitch: FC = () => (
       <SettingsPage />
     </Route>
 
+    <Route path="/class">
+      <ClassCalculatorPage />
+    </Route>
+
     <Route path="/">
-      <CalculatorPage />
+      <FunctionalCalculatorPage />
     </Route>
   </Switch>
 )

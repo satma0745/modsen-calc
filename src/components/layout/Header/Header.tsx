@@ -12,7 +12,11 @@ const Header: FC = () => (
     <Spacer />
 
     <Link exact to="/">
-      Home
+      FC Implementation
+    </Link>
+
+    <Link exact to="/class">
+      CC Implementation
     </Link>
 
     <Link to="/settings">Settings</Link>

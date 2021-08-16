@@ -17,7 +17,8 @@
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "react/prop-types": "off",
     "no-unused-vars": ["error", { "varsIgnorePattern": "^_", "argsIgnorePattern": "^_" }],
-    "@typescript-eslint/no-unused-vars": ["error", { "varsIgnorePattern": "^_", "argsIgnorePattern": "^_" }]
+    "@typescript-eslint/no-unused-vars": ["error", { "varsIgnorePattern": "^_", "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-empty-function": "off"
   },
   "overrides": [
     { "files": ["*.ts", "*.tsx"], "rules": { "@typescript-eslint/explicit-module-boundary-types": ["error"] } }
