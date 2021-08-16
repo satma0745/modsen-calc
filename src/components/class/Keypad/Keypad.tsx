@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react'
+import { observer } from 'mobx-react'
 
-import Button from './Button'
-import Grid from './Grid'
+import calculator from '@store/calculator'
+import { Button, Grid } from './Styled'
 
 const keypad = [
   ['C', '7', '8', '9', '*'],
@@ -10,22 +11,20 @@ const keypad = [
   ['.', '(', '0', ')', 'CE'],
 ].flatMap((x) => x)
 
-interface Props {
-  onKeyPressed: (_: string) => void
-}
-
-class Keypad extends PureComponent<Props> {
-  render(): JSX.Element {
-    return (
-      <Grid>
-        {keypad.map((label) => (
-          <Button key={label} onClick={() => this.props.onKeyPressed(label)}>
-            {label}
-          </Button>
-        ))}
-      </Grid>
-    )
-  }
-}
+const Keypad = observer(
+  class Keypad extends PureComponent {
+    render(): JSX.Element {
+      return (
+        <Grid>
+          {keypad.map((label) => (
+            <Button key={label} onClick={() => calculator.onInput(label)}>
+              {label}
+            </Button>
+          ))}
+        </Grid>
+      )
+    }
+  },
+)
 
 export default Keypad

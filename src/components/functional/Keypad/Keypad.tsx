@@ -1,7 +1,8 @@
-import React, { FC, memo } from 'react'
+import React, { memo } from 'react'
+import { observer } from 'mobx-react'
 
-import Button from './Button'
-import Grid from './Grid'
+import calculator from '@store/calculator'
+import { Button, Grid } from './Styled'
 
 const keypad = [
   ['C', '7', '8', '9', '*'],
@@ -10,18 +11,14 @@ const keypad = [
   ['.', '(', '0', ')', 'CE'],
 ].flatMap((x) => x)
 
-interface Props {
-  onKeyPressed: (_: string) => void
-}
-
-const Keypad: FC<Props> = ({ onKeyPressed }) => (
+const Keypad = observer(() => (
   <Grid>
     {keypad.map((label) => (
-      <Button key={label} onClick={() => onKeyPressed(label)}>
+      <Button key={label} onClick={() => calculator.onInput(label)}>
         {label}
       </Button>
     ))}
   </Grid>
-)
+))
 
 export default memo(Keypad)

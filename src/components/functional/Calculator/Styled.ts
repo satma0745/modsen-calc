@@ -15,5 +15,11 @@ const Separator = styled.hr`
   margin: 0 0.5em;
 `
 
-export default Section
-export { Separator }
+const Surface = styled.div`
+  padding: 1em;
+  border: 1px solid gray;
+  display: flex;
+  flex-direction: row;
+`
+
+export { Section, Separator, Surface }

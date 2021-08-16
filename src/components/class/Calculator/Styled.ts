@@ -11,4 +11,15 @@ const Section = styled.section`
   flex-grow: ${({ grow }: SectionProps) => grow};
 `
 
-export default Section
+const Separator = styled.hr`
+  margin: 0 0.5em;
+`
+
+const Surface = styled.div`
+  padding: 1em;
+  border: 1px solid gray;
+  display: flex;
+  flex-direction: row;
+`
+
+export { Section, Separator, Surface }

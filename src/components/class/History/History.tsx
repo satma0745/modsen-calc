@@ -1,27 +1,24 @@
 import React, { PureComponent } from 'react'
+import { observer } from 'mobx-react'
 
-import Container from './Container'
-import Header from './Header'
-import List from './List'
-import Record from './Record'
+import calculator from '@store/calculator'
+import { Container, Header, List, Record } from './Styled'
 
-interface Props {
-  history: string[]
-}
-
-class History extends PureComponent<Props> {
-  render(): JSX.Element {
-    return (
-      <Container>
-        <Header>History</Header>
-        <List>
-          {this.props.history.map((record, index) => (
-            <Record key={index}>{record}</Record>
-          ))}
-        </List>
-      </Container>
-    )
-  }
-}
+const History = observer(
+  class History extends PureComponent {
+    render(): JSX.Element {
+      return (
+        <Container>
+          <Header>History</Header>
+          <List>
+            {calculator.history.map((record, index) => (
+              <Record key={index}>{record}</Record>
+            ))}
+          </List>
+        </Container>
+      )
+    }
+  },
+)
 
 export default History

@@ -1,23 +1,18 @@
-import React, { FC, memo } from 'react'
+import React, { memo } from 'react'
+import { observer } from 'mobx-react'
 
-import Container from './Container'
-import Header from './Header'
-import List from './List'
-import Record from './Record'
+import calculator from '@store/calculator'
+import { Container, Header, List, Record } from './Styled'
 
-interface Props {
-  history: string[]
-}
-
-const History: FC<Props> = ({ history }) => (
+const History = observer(() => (
   <Container>
     <Header>History</Header>
     <List>
-      {history.map((record, index) => (
+      {calculator.history.map((record, index) => (
         <Record key={index}>{record}</Record>
       ))}
     </List>
   </Container>
-)
+))
 
 export default memo(History)

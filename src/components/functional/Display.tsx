@@ -1,5 +1,8 @@
-import React, { FC, memo } from 'react'
+import React, { memo } from 'react'
 import styled from 'styled-components'
+import { observer } from 'mobx-react'
+
+import calculator from '@store/calculator'
 
 const Container = styled.div`
   text-align: right;
@@ -7,10 +10,6 @@ const Container = styled.div`
   padding: 0 2em;
 `
 
-interface Props {
-  content: string
-}
-
-const Display: FC<Props> = ({ content }) => <Container>{content}</Container>
+const Display = observer(() => <Container>{calculator.display}</Container>)
 
 export default memo(Display)
