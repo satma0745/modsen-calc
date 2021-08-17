@@ -1,8 +1,10 @@
 import React, { FC } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import styled from 'styled-components'
+import { Provider } from 'react-redux'
 
 import PageSwitch from '@pages'
+import store from '@redux/store'
 
 import { Header } from './layout'
 
@@ -24,14 +26,16 @@ const Page = styled.div`
 `
 
 const Root: FC = () => (
-  <BrowserRouter>
-    <App>
-      <Header />
-      <Page>
-        <PageSwitch />
-      </Page>
-    </App>
-  </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+      <App>
+        <Header />
+        <Page>
+          <PageSwitch />
+        </Page>
+      </App>
+    </BrowserRouter>
+  </Provider>
 )
 
 export default Root

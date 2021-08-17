@@ -1,18 +1,21 @@
-import React, { memo } from 'react'
-import { observer } from 'mobx-react'
+import React, { FC, memo } from 'react'
 
-import calculator from '@store/calculator'
+import { useHistorySelector } from '@redux/hooks'
 import { Container, Header, List, Record } from './Styled'
 
-const History = observer(() => (
-  <Container>
-    <Header>History</Header>
-    <List>
-      {calculator.history.map((record, index) => (
-        <Record key={index}>{record}</Record>
-      ))}
-    </List>
-  </Container>
-))
+const History: FC = () => {
+  const history = useHistorySelector()
+
+  return (
+    <Container>
+      <Header>History</Header>
+      <List>
+        {history.map((record, index) => (
+          <Record key={index}>{record}</Record>
+        ))}
+      </List>
+    </Container>
+  )
+}
 
 export default memo(History)

@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { observer } from 'mobx-react'
+import { connect } from 'react-redux'
+import { __, match } from 'ts-pattern'
 
-import calculator from '@store/calculator'
+import prettifyExpression from '@core/prettifyExpression'
+import { RootState } from '@redux/store'
+import { inputsSelector } from '@redux/reducers/input'
 
 const Container = styled.div`
   text-align: right;
@@ -10,12 +13,30 @@ const Container = styled.div`
   padding: 0 2em;
 `
 
-const Display = observer(
-  class Display extends Component {
-    render(): JSX.Element {
-      return <Container>{calculator.display}</Container>
-    }
-  },
-)
+interface Props {
+  inputs: ReturnType<typeof inputsSelector>
+  answer: string | undefined
+}
 
-export default Display
+class Display extends Component<Props> {
+  constructor(props: Props) {
+    super(props)
+  }
+
+  get display() {
+    return match<[number, string | undefined]>([this.props.inputs.length, this.props.answer])
+      .with([0, undefined], () => '0')
+      .with([0, __.string], ([_, answer]) => answer)
+      .otherwise(() => prettifyExpression(this.props.inputs))
+  }
+
+  render(): JSX.Element {
+    return <Container>{this.display}</Container>
+  }
+}
+
+const mapStateToProps = (state: RootState) => ({
+  inputs: inputsSelector(state),
+})
+
+export default connect(mapStateToProps)(Display)

@@ -1,8 +1,9 @@
-import React, { memo } from 'react'
+import React, { FC, memo, useMemo } from 'react'
 import styled from 'styled-components'
-import { observer } from 'mobx-react'
+import { __, match } from 'ts-pattern'
 
-import calculator from '@store/calculator'
+import { useInputsSelector } from '@redux/hooks'
+import prettifyExpression from '@core/prettifyExpression'
 
 const Container = styled.div`
   text-align: right;
@@ -10,6 +11,21 @@ const Container = styled.div`
   padding: 0 2em;
 `
 
-const Display = observer(() => <Container>{calculator.display}</Container>)
+interface Props {
+  answer: string | undefined
+}
+
+const Display: FC<Props> = ({ answer }) => {
+  const inputs = useInputsSelector()
+
+  const display = useMemo(() => {
+    return match<[number, string | undefined]>([inputs.length, answer])
+      .with([0, undefined], () => '0')
+      .with([0, __.string], ([_, answer]) => answer)
+      .otherwise(() => prettifyExpression(inputs))
+  }, [inputs, answer])
+
+  return <Container>{display}</Container>
+}
 
 export default memo(Display)

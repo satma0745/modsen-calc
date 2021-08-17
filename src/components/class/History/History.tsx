@@ -1,24 +1,36 @@
 import React, { PureComponent } from 'react'
-import { observer } from 'mobx-react'
+import { connect } from 'react-redux'
 
-import calculator from '@store/calculator'
+import { historySelector } from '@redux/reducers/history'
+import { RootState } from '@redux/store'
+
 import { Container, Header, List, Record } from './Styled'
 
-const History = observer(
-  class History extends PureComponent {
-    render(): JSX.Element {
-      return (
-        <Container>
-          <Header>History</Header>
-          <List>
-            {calculator.history.map((record, index) => (
-              <Record key={index}>{record}</Record>
-            ))}
-          </List>
-        </Container>
-      )
-    }
-  },
-)
+interface Props {
+  history: ReturnType<typeof historySelector>
+}
 
-export default History
+class History extends PureComponent<Props> {
+  constructor(props: Props) {
+    super(props)
+  }
+
+  render(): JSX.Element {
+    return (
+      <Container>
+        <Header>History</Header>
+        <List>
+          {this.props.history.map((record, index) => (
+            <Record key={index}>{record}</Record>
+          ))}
+        </List>
+      </Container>
+    )
+  }
+}
+
+const mapStateToProps = (state: RootState) => ({
+  history: historySelector(state),
+})
+
+export default connect(mapStateToProps)(History)

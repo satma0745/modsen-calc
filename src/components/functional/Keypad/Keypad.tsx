@@ -1,24 +1,31 @@
-import React, { memo } from 'react'
-import { observer } from 'mobx-react'
+import React, { FC, memo } from 'react'
 
-import calculator from '@store/calculator'
+import useKeypad from './useKeypad'
 import { Button, Grid } from './Styled'
 
-const keypad = [
+interface Props {
+  onEquals: () => void
+}
+
+const keys = [
   ['C', '7', '8', '9', '*'],
   ['-', '4', '5', '6', '/'],
   ['+', '1', '2', '3', '='],
   ['.', '(', '0', ')', 'CE'],
 ].flatMap((x) => x)
 
-const Keypad = observer(() => (
-  <Grid>
-    {keypad.map((label) => (
-      <Button key={label} onClick={() => calculator.onInput(label)}>
-        {label}
-      </Button>
-    ))}
-  </Grid>
-))
+const Keypad: FC<Props> = ({ onEquals }) => {
+  const onKeyPress = useKeypad(onEquals)
+
+  return (
+    <Grid>
+      {keys.map((label) => (
+        <Button key={label} onClick={() => onKeyPress(label)}>
+          {label}
+        </Button>
+      ))}
+    </Grid>
+  )
+}
 
 export default memo(Keypad)

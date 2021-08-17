@@ -1,30 +1,37 @@
 import React, { PureComponent } from 'react'
-import { observer } from 'mobx-react'
+import { connect } from 'react-redux'
+import { match } from 'ts-pattern'
 
-import calculator from '@store/calculator'
-import { Button, Grid } from './Styled'
+import { clearAll, clearEntry, add } from '@redux/reducers/input'
+import Presentation from './Presentation'
 
-const keypad = [
-  ['C', '7', '8', '9', '*'],
-  ['-', '4', '5', '6', '/'],
-  ['+', '1', '2', '3', '='],
-  ['.', '(', '0', ')', 'CE'],
-].flatMap((x) => x)
+interface Props {
+  clearAll: typeof clearAll
+  clearEntry: typeof clearEntry
+  add: typeof add
+  onEquals: () => void
+}
 
-const Keypad = observer(
-  class Keypad extends PureComponent {
-    render(): JSX.Element {
-      return (
-        <Grid>
-          {keypad.map((label) => (
-            <Button key={label} onClick={() => calculator.onInput(label)}>
-              {label}
-            </Button>
-          ))}
-        </Grid>
-      )
-    }
-  },
-)
+class Controller extends PureComponent<Props> {
+  constructor(props: Props) {
+    super(props)
 
-export default Keypad
+    this.onKeyPress = this.onKeyPress.bind(this)
+  }
+
+  private onKeyPress(key: string) {
+    match(key)
+      .with('C', () => this.props.clearAll())
+      .with('CE', () => this.props.clearEntry())
+      .with('=', () => this.props.onEquals())
+      .otherwise(() => this.props.add(key))
+  }
+
+  render(): JSX.Element {
+    return <Presentation onKeyPress={this.onKeyPress} />
+  }
+}
+
+const mapDispatchToProps = { clearAll, clearEntry, add }
+
+export default connect(null, mapDispatchToProps)(Controller)

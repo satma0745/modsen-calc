@@ -18,8 +18,8 @@
       "@core/*": ["src/core/*"],
       "@pages": ["src/pages"],
       "@pages/*": ["src/pages/*"],
-      "@store": ["src/store"],
-      "@store/*": ["src/store/*"]
+      "@redux": ["src/redux"],
+      "@redux/*": ["src/redux/*"]
     }
   },
   "exclude": ["node_modules"]
