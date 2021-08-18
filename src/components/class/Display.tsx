@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { __, match } from 'ts-pattern'
 
-import prettifyExpression from '@core/prettifyExpression'
+import { prettify } from '@core/input'
 import { RootState } from '@redux/store'
 import { inputsSelector } from '@redux/reducers/input'
 
@@ -27,7 +27,7 @@ class Display extends Component<Props> {
     return match<[number, string | undefined]>([this.props.inputs.length, this.props.answer])
       .with([0, undefined], () => '0')
       .with([0, __.string], ([_, answer]) => answer)
-      .otherwise(() => prettifyExpression(this.props.inputs))
+      .otherwise(() => prettify(this.props.inputs))
   }
 
   render(): JSX.Element {

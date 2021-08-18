@@ -3,10 +3,10 @@ import { __, match } from 'ts-pattern'
 import { connect } from 'react-redux'
 
 import calculate from '@core/calculator'
-import prettifyExpression from '@core/prettifyExpression'
+import { prettify } from '@core/input'
 
 import { add } from '@redux/reducers/history'
-import { addMany, clearAll, inputsSelector } from '@redux/reducers/input'
+import { addNumeric, clearAll, inputsSelector } from '@redux/reducers/input'
 import { RootState } from '@redux/store'
 
 import Presentation from './Presentation'
@@ -15,7 +15,7 @@ interface Props {
   inputs: ReturnType<typeof inputsSelector>
   add: typeof add
   clearAll: typeof clearAll
-  addMany: typeof addMany
+  addNumeric: typeof addNumeric
 }
 
 interface State {
@@ -38,14 +38,14 @@ class Calculator extends Component<Props, State> {
       .with(__.number, (answer) => answer.toString())
       .otherwise(() => 'Error')
 
-    const expression = prettifyExpression(this.props.inputs)
+    const expression = prettify(this.props.inputs)
     const record = `${expression} = ${answer}`
     this.props.add(record)
 
     this.props.clearAll()
 
     if (answer !== 'Error') {
-      this.props.addMany(answer.split(''))
+      this.props.addNumeric(answer)
     }
   }
 
@@ -58,6 +58,6 @@ const mapStateToProps = (state: RootState) => ({
   inputs: inputsSelector(state),
 })
 
-const mapDispatchToProps = { add, addMany, clearAll }
+const mapDispatchToProps = { add, addNumeric, clearAll }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Calculator)

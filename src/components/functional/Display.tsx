@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { __, match } from 'ts-pattern'
 
 import { useInputsSelector } from '@redux/hooks'
-import prettifyExpression from '@core/prettifyExpression'
+import { prettify } from '@core/input'
 
 const Container = styled.div`
   text-align: right;
@@ -22,7 +22,7 @@ const Display: FC<Props> = ({ answer }) => {
     return match<[number, string | undefined]>([inputs.length, answer])
       .with([0, undefined], () => '0')
       .with([0, __.string], ([_, answer]) => answer)
-      .otherwise(() => prettifyExpression(inputs))
+      .otherwise(() => prettify(inputs))
   }, [inputs, answer])
 
   return <Container>{display}</Container>

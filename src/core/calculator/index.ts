@@ -1,12 +1,12 @@
-import normalize from './normalizer'
+import { Input } from '../input'
+
 import parse from './parser'
 import validate from './validator'
 import toPostfix from './notation'
 import calculate from './calculator'
 
-const processExpression = (inputs: string[]): number | false => {
-  const normalized = normalize(inputs)
-  const parsed = parse(normalized)
+const processExpression = (input: Input): number | false => {
+  const parsed = parse(input)
 
   const isValid = validate(parsed)
   if (!isValid) {

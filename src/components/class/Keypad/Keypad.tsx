@@ -2,13 +2,14 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { match } from 'ts-pattern'
 
-import { clearAll, clearEntry, add } from '@redux/reducers/input'
+import { clearAll, clearEntry, addNumeric, addNonNumeric } from '@redux/reducers/input'
 import Presentation from './Presentation'
 
 interface Props {
   clearAll: typeof clearAll
   clearEntry: typeof clearEntry
-  add: typeof add
+  addNumeric: typeof addNumeric
+  addNonNumeric: typeof addNonNumeric
   onEquals: () => void
 }
 
@@ -24,7 +25,11 @@ class Controller extends PureComponent<Props> {
       .with('C', () => this.props.clearAll())
       .with('CE', () => this.props.clearEntry())
       .with('=', () => this.props.onEquals())
-      .otherwise(() => this.props.add(key))
+      .with('+', '-', '*', '/', '(', ')', () => this.props.addNonNumeric(key))
+      .with('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', () => this.props.addNumeric(key))
+      .otherwise(() => {
+        throw new Error(`Unsupported key "${key}"`)
+      })
   }
 
   render(): JSX.Element {
@@ -32,6 +37,6 @@ class Controller extends PureComponent<Props> {
   }
 }
 
-const mapDispatchToProps = { clearAll, clearEntry, add }
+const mapDispatchToProps = { clearAll, clearEntry, addNumeric, addNonNumeric }
 
 export default connect(null, mapDispatchToProps)(Controller)

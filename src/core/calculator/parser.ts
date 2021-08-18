@@ -1,39 +1,39 @@
 import { match } from 'ts-pattern'
-import { Bracket, Expression, Literal, Operator, OperatorKind } from './types'
 
-const isNumber = (candidate: string) => {
-  return candidate.length === 0 ? false : !isNaN(Number(candidate))
+import { Input, InputToken } from '../input'
+import { Bracket, Expression, Literal, Operator, OperatorKind, OperatorPriority } from './types'
+
+const parseNumeric = (token: InputToken): Literal => {
+  const value = Number(token.value)
+  return { kind: 'literal', value }
 }
 
-const add: Operator = { kind: 'operator', operator: '+', priority: 0 }
-const subtract: Operator = { kind: 'operator', operator: '-', priority: 0 }
-const multiply: Operator = { kind: 'operator', operator: '*', priority: 1 }
-const divide: Operator = { kind: 'operator', operator: '/', priority: 1 }
+const operator = (operator: OperatorKind, priority: OperatorPriority): Operator => ({
+  kind: 'operator',
+  operator,
+  priority,
+})
+const bracket = (kind: 'open' | 'close'): Bracket => ({ kind: 'bracket', open: kind === 'open' })
 
-const parseOperator = (operator: OperatorKind): Operator => {
-  return match(operator)
-    .with('+', () => add)
-    .with('-', () => subtract)
-    .with('*', () => multiply)
-    .with('/', () => divide)
-    .exhaustive()
-}
-
-const parseExpressionToken = (token: string) => {
-  return match(token)
-    .with('+', '-', '*', '/', (operatorToken) => parseOperator(operatorToken))
-    .with('(', (): Bracket => ({ kind: 'bracket', open: true }))
-    .with(')', (): Bracket => ({ kind: 'bracket', open: false }))
-    .otherwise((input): Literal => {
-      if (isNumber(input)) {
-        return { kind: 'literal', value: Number(input) }
-      }
-
-      throw new Error(`Unsupported token "${token}"`)
+const parseNonNumeric = (token: InputToken): Operator | Bracket => {
+  return match(token.value)
+    .with('(', () => bracket('open'))
+    .with(')', () => bracket('close'))
+    .with('+', '-', (op) => operator(op, 0))
+    .with('*', '/', (op) => operator(op, 1))
+    .otherwise((value) => {
+      throw new Error(`Unsupported non-numeric token "${value}"`)
     })
 }
 
-const parse = (expression: string[]): Expression => {
+const parseExpressionToken = (token: InputToken) => {
+  return match(token)
+    .with({ kind: 'numeric' }, parseNumeric)
+    .with({ kind: 'non-numeric' }, parseNonNumeric)
+    .exhaustive()
+}
+
+const parse = (expression: Input): Expression => {
   return expression.map(parseExpressionToken)
 }
 

@@ -2,10 +2,10 @@ import { useCallback, useState } from 'react'
 import { __, match } from 'ts-pattern'
 
 import calculate from '@core/calculator'
-import prettifyExpression from '@core/prettifyExpression'
+import { prettify } from '@core/input'
 
 import { add } from '@redux/reducers/history'
-import { addMany, clearAll } from '@redux/reducers/input'
+import { addNumeric, clearAll } from '@redux/reducers/input'
 import { useDispatch, useInputsSelector } from '@redux/hooks'
 
 interface ReturnType {
@@ -23,13 +23,13 @@ const useCalculator = (): ReturnType => {
       .with(__.number, (answer) => answer.toString())
       .otherwise(() => 'Error')
 
-    const expression = prettifyExpression(inputs)
+    const expression = prettify(inputs)
     const record = `${expression} = ${answer}`
     dispatch(add(record))
 
     dispatch(clearAll())
     if (answer !== 'Error') {
-      dispatch(addMany(answer.split('')))
+      dispatch(addNumeric(answer))
     }
   }, [inputs, setAnswer])
 

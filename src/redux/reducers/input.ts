@@ -1,8 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
+import { Input, InputToken } from '@core/input'
 import { RootState } from '../store'
 
 interface InputState {
-  inputs: string[]
+  inputs: Input
 }
 
 const initialState: InputState = {
@@ -17,25 +19,49 @@ const inputSlice = createSlice({
       state.inputs = []
     },
     clearEntry: (state) => {
-      if (state.inputs.length > 0) {
+      if (state.inputs.length === 0) {
+        return
+      }
+
+      // if the last token is numeric: remove char from it's value, otherwise: remove whole token
+      const last = state.inputs[state.inputs.length - 1]
+      if (last.kind === 'numeric') {
+        const value = last.value.slice(0, -1)
+
+        // only if resulting value is still a valid number
+        if (value.length === 0 || value === '-' || value === '.') {
+          state.inputs.pop()
+        } else {
+          state.inputs[state.inputs.length - 1].value = value
+        }
+      } else {
         state.inputs.pop()
       }
     },
-    add: (state, action: PayloadAction<string>) => {
-      const input = action.payload
-      state.inputs.push(input)
+    addNumeric: (state, action: PayloadAction<string>) => {
+      const value = action.payload
+
+      // if the previous token is numeric: append the new value to it, otherwise: create a new token
+      const previousToken = state.inputs[state.inputs.length - 1]
+      if (previousToken !== undefined && previousToken.kind === 'numeric') {
+        state.inputs[state.inputs.length - 1].value += value
+      } else {
+        const token: InputToken = { kind: 'numeric', value }
+        state.inputs.push(token)
+      }
     },
-    addMany: (state, action: PayloadAction<string[]>) => {
-      const inputs = action.payload
-      state.inputs = state.inputs.concat(inputs)
+    addNonNumeric: (state, action: PayloadAction<string>) => {
+      const value = action.payload
+      const token: InputToken = { kind: 'non-numeric', value }
+      state.inputs.push(token)
     },
   },
 })
 
 const reducer = inputSlice.reducer
 
-const { clearAll, clearEntry, add, addMany } = inputSlice.actions
-const inputsSelector = (state: RootState): string[] => state.input.inputs
+const { clearAll, clearEntry, addNumeric, addNonNumeric } = inputSlice.actions
+const inputsSelector = (state: RootState): Input => state.input.inputs
 
 export default reducer
-export { clearAll, clearEntry, add, addMany, inputsSelector }
+export { clearAll, clearEntry, addNumeric, addNonNumeric, inputsSelector }
