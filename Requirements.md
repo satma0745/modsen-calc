@@ -55,7 +55,7 @@ Settings page: ![Settings page layout](./docs/page-settings.png)
 ### Miscellaneous
 - [ ] Implement requests using the [Command pattern](https://refactoring.guru/ru/design-patterns/command).
 - [x] Implement 2 versions: one using *functional components* and the other using *class components*.
-- [ ] Error handling with *Error Boundaries*.
+- [x] Error handling with *Error Boundaries*.
 - [x] Dark and light theme using *styled-components*.
 - [x] Import aliases.
 

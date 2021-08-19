@@ -1,6 +1,7 @@
 import React, { FC, memo } from 'react'
 
 import { Section, Separator, Surface } from '@components/calculator/shared/calculator'
+import ErrorBoundary from '@components/calculator/shared/ErrorBoundary'
 
 import Display from '../Display'
 import Keypad from '../Keypad'
@@ -28,4 +29,10 @@ const Calculator: FC = () => {
   )
 }
 
-export default memo(Calculator)
+const ErrorWrapper: FC = () => (
+  <ErrorBoundary errorMessage="Calculator just crashed 😢">
+    <Calculator />
+  </ErrorBoundary>
+)
+
+export default memo(ErrorWrapper)

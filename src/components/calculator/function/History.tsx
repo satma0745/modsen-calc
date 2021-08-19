@@ -1,7 +1,9 @@
 import React, { FC, memo } from 'react'
 
 import { useHistorySelector } from '@redux/hooks'
+
 import { Container, Header, List, Record } from '@components/calculator/shared/history'
+import ErrorBoundary from '@components/calculator/shared/ErrorBoundary'
 
 const History: FC = () => {
   const history = useHistorySelector()
@@ -18,4 +20,10 @@ const History: FC = () => {
   )
 }
 
-export default memo(History)
+const ErrorWrapper: FC = () => (
+  <ErrorBoundary errorMessage="History just crashed 😢">
+    <History />
+  </ErrorBoundary>
+)
+
+export default memo(ErrorWrapper)

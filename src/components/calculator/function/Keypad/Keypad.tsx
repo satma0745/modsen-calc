@@ -1,6 +1,8 @@
 import React, { FC, memo } from 'react'
 
 import { Button, Grid } from '@components/calculator/shared/keypad'
+import ErrorBoundary from '@components/calculator/shared/ErrorBoundary'
+
 import useKeypad from './useKeypad'
 
 interface Props {
@@ -29,4 +31,10 @@ const Keypad: FC<Props> = ({ onEquals }) => {
   )
 }
 
-export default memo(Keypad)
+const ErrorWrapper: FC<Props> = (props) => (
+  <ErrorBoundary errorMessage="Keypad just crashed 😢">
+    <Keypad {...props} />
+  </ErrorBoundary>
+)
+
+export default memo(ErrorWrapper)

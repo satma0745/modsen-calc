@@ -5,13 +5,16 @@ import { match } from 'ts-pattern'
 import { clearAll, clearEntry, changeSign, addNumeric, addNonNumeric } from '@redux/reducers/input'
 import Presentation from './Presentation'
 
-interface Props {
+interface PublicProps {
+  onEquals: () => void
+}
+
+interface Props extends PublicProps {
   clearAll: typeof clearAll
   clearEntry: typeof clearEntry
   changeSign: typeof changeSign
   addNumeric: typeof addNumeric
   addNonNumeric: typeof addNonNumeric
-  onEquals: () => void
 }
 
 class Controller extends PureComponent<Props> {
@@ -42,3 +45,4 @@ class Controller extends PureComponent<Props> {
 const mapDispatchToProps = { clearAll, clearEntry, changeSign, addNumeric, addNonNumeric }
 
 export default connect(null, mapDispatchToProps)(Controller)
+export { PublicProps as Props }

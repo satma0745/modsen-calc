@@ -9,9 +9,12 @@ import { inputSelector } from '@redux/reducers/input'
 
 import { Container } from '@components/calculator/shared/display'
 
-interface Props {
-  inputs: ReturnType<typeof inputSelector>
+interface PublicProps {
   answer: string | undefined
+}
+
+interface Props extends PublicProps {
+  inputs: ReturnType<typeof inputSelector>
 }
 
 class Display extends Component<Props> {
@@ -36,3 +39,4 @@ const mapStateToProps = (state: RootState) => ({
 })
 
 export default connect(mapStateToProps)(Display)
+export { PublicProps as Props }

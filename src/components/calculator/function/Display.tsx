@@ -5,6 +5,7 @@ import { prettify } from '@core/input'
 import { useInputSelector } from '@redux/hooks'
 
 import { Container } from '@components/calculator/shared/display'
+import ErrorBoundary from '@components/calculator/shared/ErrorBoundary'
 
 interface Props {
   answer: string | undefined
@@ -23,4 +24,10 @@ const Display: FC<Props> = ({ answer }) => {
   return <Container>{display}</Container>
 }
 
-export default memo(Display)
+const ErrorWrapper: FC<Props> = (props) => (
+  <ErrorBoundary errorMessage="Display just crushed 😢">
+    <Display {...props} />
+  </ErrorBoundary>
+)
+
+export default memo(ErrorWrapper)

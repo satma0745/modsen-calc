@@ -1,3 +1,3 @@
-import Keypad from './Keypad'
+import ErrorWrapper from './ErrorWrapper'
 
-export default Keypad
+export default ErrorWrapper
