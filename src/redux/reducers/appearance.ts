@@ -14,6 +14,9 @@ const appearanceSlice = createSlice({
   name: 'appearance',
   initialState,
   reducers: {
+    hydrate: (state, action) => {
+      return action.payload
+    },
     changeTheme: (appearance, action: PayloadAction<Theme>) => {
       appearance.theme = action.payload
     },
@@ -22,8 +25,8 @@ const appearanceSlice = createSlice({
 
 const reducer = appearanceSlice.reducer
 
-const { changeTheme } = appearanceSlice.actions
+const { hydrate, changeTheme } = appearanceSlice.actions
 const themeSelector = (state: RootState): Theme => state.appearance.theme
 
 export default reducer
-export { changeTheme, themeSelector }
+export { State as AppearanceState, hydrate, changeTheme, themeSelector }
