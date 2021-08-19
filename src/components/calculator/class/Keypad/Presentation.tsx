@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { Button, Grid } from './Styled'
+import { Button, Grid } from '@components/calculator/shared/keypad'
 
 const keypad = [
   ['C', '7', '8', '9', '*'],

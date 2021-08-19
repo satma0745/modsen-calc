@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
+import { Section, Separator, Surface } from '@components/calculator/shared/calculator'
+
 import Display from '../Display'
 import History from '../History'
 import Keypad from '../Keypad'
-
-import { Section, Separator, Surface } from './Styled'
 
 interface Props {
   onEquals: () => void

@@ -1,7 +1,7 @@
 import React, { FC, memo } from 'react'
 
+import { Button, Grid } from '@components/calculator/shared/keypad'
 import useKeypad from './useKeypad'
-import { Button, Grid } from './Styled'
 
 interface Props {
   onEquals: () => void

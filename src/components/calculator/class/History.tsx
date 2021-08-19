@@ -3,8 +3,7 @@ import { connect } from 'react-redux'
 
 import { historySelector } from '@redux/reducers/history'
 import { RootState } from '@redux/store'
-
-import { Container, Header, List, Record } from './Styled'
+import { Container, Header, List, Record } from '@components/calculator/shared/history'
 
 interface Props {
   history: ReturnType<typeof historySelector>

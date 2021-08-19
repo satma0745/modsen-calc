@@ -1,7 +1,7 @@
 import React, { FC, memo } from 'react'
 
 import { useHistorySelector } from '@redux/hooks'
-import { Container, Header, List, Record } from './Styled'
+import { Container, Header, List, Record } from '@components/calculator/shared/history'
 
 const History: FC = () => {
   const history = useHistorySelector()

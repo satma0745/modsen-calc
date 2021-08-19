@@ -1,17 +1,13 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { __, match } from 'ts-pattern'
 
 import { prettify } from '@core/input'
+
 import { RootState } from '@redux/store'
 import { inputSelector } from '@redux/reducers/input'
 
-const Container = styled.div`
-  text-align: right;
-  font-size: 1em;
-  padding: 0 2em;
-`
+import { Container } from '@components/calculator/shared/display'
 
 interface Props {
   inputs: ReturnType<typeof inputSelector>

@@ -1,15 +1,10 @@
 import React, { FC, memo, useMemo } from 'react'
-import styled from 'styled-components'
 import { __, match } from 'ts-pattern'
 
 import { prettify } from '@core/input'
 import { useInputSelector } from '@redux/hooks'
 
-const Container = styled.div`
-  text-align: right;
-  font-size: 1em;
-  padding: 0 2em;
-`
+import { Container } from '@components/calculator/shared/display'
 
 interface Props {
   answer: string | undefined

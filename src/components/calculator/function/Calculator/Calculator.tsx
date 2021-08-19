@@ -1,10 +1,11 @@
 import React, { FC, memo } from 'react'
 
+import { Section, Separator, Surface } from '@components/calculator/shared/calculator'
+
 import Display from '../Display'
 import Keypad from '../Keypad'
 import History from '../History'
 
-import { Section, Separator, Surface } from './Styled'
 import useCalculator from './useCalculator'
 
 const Calculator: FC = () => {
