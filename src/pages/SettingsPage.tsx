@@ -1,5 +1,11 @@
 import React, { FC } from 'react'
+import { ThemeControl } from '@components/settings'
 
-const SettingsPage: FC = () => <h1>Settings</h1>
+const SettingsPage: FC = () => (
+  <div>
+    <h1>Settings</h1>
+    <ThemeControl />
+  </div>
+)
 
 export default SettingsPage

@@ -1,8 +1,13 @@
 import styled from 'styled-components'
+import { Theme } from '@components/theming'
+
+interface Props {
+  theme: Theme
+}
 
 const Surface = styled.div`
-  color: #fff;
-  background-color: #434343;
+  color: ${({ theme }: Props) => theme.header.color};
+  background-color: ${({ theme }: Props) => theme.header.background};
 
   padding: 1rem;
 

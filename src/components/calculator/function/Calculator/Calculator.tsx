@@ -1,12 +1,11 @@
 import React, { FC, memo } from 'react'
 
-import useCalculator from '@components/functional/Calculator/useCalculator'
-
 import Display from '../Display'
 import Keypad from '../Keypad'
 import History from '../History'
 
 import { Section, Separator, Surface } from './Styled'
+import useCalculator from './useCalculator'
 
 const Calculator: FC = () => {
   const { answer, onEquals } = useCalculator()
@@ -15,11 +14,11 @@ const Calculator: FC = () => {
     <Surface>
       <Section scale={1.8}>
         <Display answer={answer} />
-        <hr />
+        <Separator kind="horizontal" />
         <Keypad onEquals={onEquals} />
       </Section>
 
-      <Separator />
+      <Separator kind="vertical" />
 
       <Section grow={1}>
         <History />

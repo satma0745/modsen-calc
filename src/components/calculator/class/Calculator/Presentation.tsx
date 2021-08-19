@@ -21,11 +21,11 @@ class Calculator extends Component<Props> {
       <Surface>
         <Section scale={1.8}>
           <Display answer={this.props.answer} />
-          <hr />
+          <Separator kind="horizontal" />
           <Keypad onEquals={this.props.onEquals} />
         </Section>
 
-        <Separator />
+        <Separator kind="vertical" />
 
         <Section grow={1}>
           <History />

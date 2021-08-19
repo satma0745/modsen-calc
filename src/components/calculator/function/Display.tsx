@@ -2,8 +2,8 @@ import React, { FC, memo, useMemo } from 'react'
 import styled from 'styled-components'
 import { __, match } from 'ts-pattern'
 
-import { useInputSelector } from '@redux/hooks'
 import { prettify } from '@core/input'
+import { useInputSelector } from '@redux/hooks'
 
 const Container = styled.div`
   text-align: right;

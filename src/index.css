@@ -1,3 +1,8 @@
+* {
+  color: inherit;
+  background: inherit;
+}
+
 html,
 body {
   height: 100vh;

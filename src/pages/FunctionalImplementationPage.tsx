@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 
-import Calculator from '@components/functional/Calculator'
+import Calculator from '@components/calculator/function/Calculator'
 
 const PositioningWrapper = styled.div`
   height: 100%;

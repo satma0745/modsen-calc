@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { historyReducer, inputReducer } from './reducers'
+import { appearanceReducer, historyReducer, inputReducer } from './reducers'
 
 const store = configureStore({
   reducer: {
+    appearance: appearanceReducer,
     input: inputReducer,
     history: historyReducer,
   },
