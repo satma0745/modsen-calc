@@ -4,7 +4,7 @@ import { useDispatch, useThemeSelector } from '@redux/hooks'
 import { changeTheme } from '@redux/reducers/appearance'
 
 const ThemeControl: FC = () => {
-  const theme = useThemeSelector()
+  const themeKind = useThemeSelector()
   const dispatch = useDispatch()
 
   const onSelect = useCallback(
@@ -22,7 +22,7 @@ const ThemeControl: FC = () => {
   return (
     <div>
       <span>Theme: </span>
-      <select value={theme} onChange={onSelect}>
+      <select value={themeKind} onChange={onSelect}>
         <option value="light">Light theme</option>
         <option value="dark">Dark theme</option>
       </select>

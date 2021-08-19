@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Theme } from '@components/theming'
+import { Theme } from '@core/theming'
 
 interface Props {
   theme: Theme

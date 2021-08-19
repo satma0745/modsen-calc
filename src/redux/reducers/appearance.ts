@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
+import { ThemeKind } from '@core/theming'
 import { RootState } from '../store'
 
-type Theme = 'light' | 'dark'
 type State = {
-  theme: Theme
+  theme: ThemeKind
 }
 
 const initialState: State = {
@@ -17,7 +18,7 @@ const appearanceSlice = createSlice({
     hydrate: (state, action) => {
       return action.payload
     },
-    changeTheme: (appearance, action: PayloadAction<Theme>) => {
+    changeTheme: (appearance, action: PayloadAction<ThemeKind>) => {
       appearance.theme = action.payload
     },
   },
@@ -26,7 +27,7 @@ const appearanceSlice = createSlice({
 const reducer = appearanceSlice.reducer
 
 const { hydrate, changeTheme } = appearanceSlice.actions
-const themeSelector = (state: RootState): Theme => state.appearance.theme
+const themeSelector = (state: RootState): ThemeKind => state.appearance.theme
 
 export default reducer
 export { State as AppearanceState, hydrate, changeTheme, themeSelector }

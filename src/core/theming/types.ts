@@ -1,5 +1,4 @@
 interface Theme {
-  title: string
   application: {
     background: string
     color: string
@@ -22,4 +21,6 @@ interface Theme {
   }
 }
 
-export default Theme
+type ThemeKind = 'light' | 'dark'
+
+export { Theme, ThemeKind }

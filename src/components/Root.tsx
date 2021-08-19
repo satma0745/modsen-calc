@@ -1,26 +1,29 @@
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
+import { Provider as ReduxProvider } from 'react-redux'
+import { ThemeProvider as StyledThemeProvider } from 'styled-components'
 import { BrowserRouter } from 'react-router-dom'
-import { Provider as StoreProvider } from 'react-redux'
 
-import PageSwitch from '@pages'
+import { selectTheme } from '@core/theming'
 import store from '@redux/store'
+import { useThemeSelector } from '@redux/hooks'
 
-import { App, Header, Page } from './layout'
-import { ThemeProvider } from './theming'
+import Application from './Application'
+
+const ThemeProvider: FC = ({ children }) => {
+  const themeKind = useThemeSelector()
+  const theme = useMemo(() => selectTheme(themeKind), [themeKind])
+
+  return <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>
+}
 
 const Root: FC = () => (
-  <StoreProvider store={store}>
+  <ReduxProvider store={store}>
     <ThemeProvider>
       <BrowserRouter>
-        <App>
-          <Header />
-          <Page>
-            <PageSwitch />
-          </Page>
-        </App>
+        <Application />
       </BrowserRouter>
     </ThemeProvider>
-  </StoreProvider>
+  </ReduxProvider>
 )
 
 export default Root

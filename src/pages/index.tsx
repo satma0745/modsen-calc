@@ -1,3 +1,1 @@
-import PageSwitch from './PageSwitch'
-
-export default PageSwitch
+export { default as PageSwitch } from './PageSwitch'

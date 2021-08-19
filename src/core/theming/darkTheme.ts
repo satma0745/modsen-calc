@@ -1,7 +1,6 @@
-import Theme from './Theme'
+import { Theme } from './types'
 
 const darkTheme: Theme = {
-  title: 'dark',
   application: {
     background: '#1d1d1d',
     color: '#e7e8eb',
