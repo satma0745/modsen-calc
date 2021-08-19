@@ -38,6 +38,22 @@ const inputSlice = createSlice({
         state.inputs.pop()
       }
     },
+    changeSign: (state) => {
+      if (state.inputs.length === 0) {
+        return
+      }
+
+      const last = state.inputs[state.inputs.length - 1]
+      if (last.kind !== 'numeric') {
+        return
+      }
+
+      if (last.value.startsWith('-')) {
+        last.value = last.value.substring(1)
+      } else {
+        last.value = '-' + last.value
+      }
+    },
     addNumeric: (state, action: PayloadAction<string>) => {
       const value = action.payload
 
@@ -60,8 +76,8 @@ const inputSlice = createSlice({
 
 const reducer = inputSlice.reducer
 
-const { clearAll, clearEntry, addNumeric, addNonNumeric } = inputSlice.actions
+const { clearAll, clearEntry, changeSign, addNumeric, addNonNumeric } = inputSlice.actions
 const inputsSelector = (state: RootState): Input => state.input.inputs
 
 export default reducer
-export { clearAll, clearEntry, addNumeric, addNonNumeric, inputsSelector }
+export { clearAll, clearEntry, changeSign, addNumeric, addNonNumeric, inputsSelector }

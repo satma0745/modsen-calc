@@ -2,12 +2,13 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { match } from 'ts-pattern'
 
-import { clearAll, clearEntry, addNumeric, addNonNumeric } from '@redux/reducers/input'
+import { clearAll, clearEntry, changeSign, addNumeric, addNonNumeric } from '@redux/reducers/input'
 import Presentation from './Presentation'
 
 interface Props {
   clearAll: typeof clearAll
   clearEntry: typeof clearEntry
+  changeSign: typeof changeSign
   addNumeric: typeof addNumeric
   addNonNumeric: typeof addNonNumeric
   onEquals: () => void
@@ -25,6 +26,7 @@ class Controller extends PureComponent<Props> {
       .with('C', () => this.props.clearAll())
       .with('CE', () => this.props.clearEntry())
       .with('=', () => this.props.onEquals())
+      .with('+/-', () => this.props.changeSign())
       .with('+', '-', '*', '/', '(', ')', () => this.props.addNonNumeric(key))
       .with('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', () => this.props.addNumeric(key))
       .otherwise(() => {
@@ -37,6 +39,6 @@ class Controller extends PureComponent<Props> {
   }
 }
 
-const mapDispatchToProps = { clearAll, clearEntry, addNumeric, addNonNumeric }
+const mapDispatchToProps = { clearAll, clearEntry, changeSign, addNumeric, addNonNumeric }
 
 export default connect(null, mapDispatchToProps)(Controller)

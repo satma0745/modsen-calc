@@ -32,6 +32,7 @@
 - [x] Complex expressions
 - [ ] Controllable precision (3 by default)
 - [x] Clear
+- [x] Change sign key
 
 #### History
 - [ ] Show/hide history
