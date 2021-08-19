@@ -5,15 +5,15 @@ import { connect } from 'react-redux'
 import calculate from '@core/calculator'
 import { prettify } from '@core/input'
 
-import { add } from '@redux/reducers/history'
-import { addNumeric, clearAll, inputsSelector } from '@redux/reducers/input'
+import { addRecord } from '@redux/reducers/history'
+import { addNumeric, clearAll, inputSelector } from '@redux/reducers/input'
 import { RootState } from '@redux/store'
 
 import Presentation from './Presentation'
 
 interface Props {
-  inputs: ReturnType<typeof inputsSelector>
-  add: typeof add
+  inputs: ReturnType<typeof inputSelector>
+  add: typeof addRecord
   clearAll: typeof clearAll
   addNumeric: typeof addNumeric
 }
@@ -55,9 +55,9 @@ class Calculator extends Component<Props, State> {
 }
 
 const mapStateToProps = (state: RootState) => ({
-  inputs: inputsSelector(state),
+  inputs: inputSelector(state),
 })
 
-const mapDispatchToProps = { add, addNumeric, clearAll }
+const mapDispatchToProps = { add: addRecord, addNumeric, clearAll }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Calculator)

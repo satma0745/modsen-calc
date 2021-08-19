@@ -4,9 +4,9 @@ import { __, match } from 'ts-pattern'
 import calculate from '@core/calculator'
 import { prettify } from '@core/input'
 
-import { add } from '@redux/reducers/history'
+import { addRecord } from '@redux/reducers/history'
 import { addNumeric, clearAll } from '@redux/reducers/input'
-import { useDispatch, useInputsSelector } from '@redux/hooks'
+import { useDispatch, useInputSelector } from '@redux/hooks'
 
 interface ReturnType {
   answer: string | undefined
@@ -16,7 +16,7 @@ interface ReturnType {
 const useCalculator = (): ReturnType => {
   const [answer, setAnswer] = useState<string | undefined>()
   const dispatch = useDispatch()
-  const inputs = useInputsSelector()
+  const inputs = useInputSelector()
 
   const onEquals = useCallback(() => {
     const answer = match(calculate(inputs))
@@ -25,7 +25,7 @@ const useCalculator = (): ReturnType => {
 
     const expression = prettify(inputs)
     const record = `${expression} = ${answer}`
-    dispatch(add(record))
+    dispatch(addRecord(record))
 
     dispatch(clearAll())
     if (answer !== 'Error') {

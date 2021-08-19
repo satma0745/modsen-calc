@@ -5,7 +5,7 @@ import { __, match } from 'ts-pattern'
 
 import { prettify } from '@core/input'
 import { RootState } from '@redux/store'
-import { inputsSelector } from '@redux/reducers/input'
+import { inputSelector } from '@redux/reducers/input'
 
 const Container = styled.div`
   text-align: right;
@@ -14,7 +14,7 @@ const Container = styled.div`
 `
 
 interface Props {
-  inputs: ReturnType<typeof inputsSelector>
+  inputs: ReturnType<typeof inputSelector>
   answer: string | undefined
 }
 
@@ -36,7 +36,7 @@ class Display extends Component<Props> {
 }
 
 const mapStateToProps = (state: RootState) => ({
-  inputs: inputsSelector(state),
+  inputs: inputSelector(state),
 })
 
 export default connect(mapStateToProps)(Display)

@@ -1,13 +1,13 @@
 import { TypedUseSelectorHook, useSelector, useDispatch } from 'react-redux'
 
-import { inputsSelector } from './reducers/input'
+import { inputSelector } from './reducers/input'
 import { historySelector } from './reducers/history'
 import { RootState, Dispatch } from './store'
 
 const typedUseSelector: TypedUseSelectorHook<RootState> = useSelector
-const useInputsSelector = (): ReturnType<typeof inputsSelector> => typedUseSelector(inputsSelector)
+const useInputSelector = (): ReturnType<typeof inputSelector> => typedUseSelector(inputSelector)
 const useHistorySelector = (): ReturnType<typeof historySelector> => typedUseSelector(historySelector)
 
 const typedUseDispatch = (): Dispatch => useDispatch<Dispatch>()
 
-export { useInputsSelector, useHistorySelector, typedUseDispatch as useDispatch }
+export { useInputSelector, useHistorySelector, typedUseDispatch as useDispatch }

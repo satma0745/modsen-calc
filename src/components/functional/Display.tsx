@@ -2,7 +2,7 @@ import React, { FC, memo, useMemo } from 'react'
 import styled from 'styled-components'
 import { __, match } from 'ts-pattern'
 
-import { useInputsSelector } from '@redux/hooks'
+import { useInputSelector } from '@redux/hooks'
 import { prettify } from '@core/input'
 
 const Container = styled.div`
@@ -16,7 +16,7 @@ interface Props {
 }
 
 const Display: FC<Props> = ({ answer }) => {
-  const inputs = useInputsSelector()
+  const inputs = useInputSelector()
 
   const display = useMemo(() => {
     return match<[number, string | undefined]>([inputs.length, answer])

@@ -1,29 +1,24 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '@redux/store'
 
-interface HistoryState {
-  records: string[]
-}
-
-const initialState: HistoryState = {
-  records: [],
-}
+type State = string[]
+const initialState: State = []
 
 const historySlice = createSlice({
   name: 'history',
   initialState,
   reducers: {
-    add: (state, action: PayloadAction<string>) => {
+    addRecord: (history, action: PayloadAction<string>) => {
       const record = action.payload
-      state.records.push(record)
+      history.push(record)
     },
   },
 })
 
 const reducer = historySlice.reducer
 
-const { add } = historySlice.actions
-const historySelector = (state: RootState): string[] => state.history.records
+const { addRecord } = historySlice.actions
+const historySelector = (state: RootState): string[] => state.history
 
 export default reducer
-export { add, historySelector }
+export { addRecord, historySelector }
