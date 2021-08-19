@@ -8,7 +8,7 @@ const prettifyToken = (token: InputToken) => {
       return match(nonNumeric.value)
         .with('(', () => ' (')
         .with(')', () => ') ')
-        .with('+', '-', '*', '/', (operator) => ` ${operator} `)
+        .with('+', '-', '*', '/', '%', (operator) => ` ${operator} `)
         .otherwise((value) => value)
     })
     .exhaustive()

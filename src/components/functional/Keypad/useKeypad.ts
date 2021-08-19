@@ -20,7 +20,7 @@ const useKeypad = (onEquals: OnEquals): ReturnType => {
         .with('CE', () => dispatch(clearEntry()))
         .with('=', () => onEquals())
         .with('+/-', () => dispatch(changeSign()))
-        .with('+', '-', '*', '/', '(', ')', () => dispatch(addNonNumeric(key)))
+        .with('+', '-', '*', '/', '%', '(', ')', () => dispatch(addNonNumeric(key)))
         .with('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', () => dispatch(addNumeric(key)))
         .otherwise(() => {
           throw new Error(`Unsupported key "${key}"`)

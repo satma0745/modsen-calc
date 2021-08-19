@@ -20,7 +20,7 @@ const parseNonNumeric = (token: InputToken): Operator | Bracket => {
     .with('(', () => bracket('open'))
     .with(')', () => bracket('close'))
     .with('+', '-', (op) => operator(op, 0))
-    .with('*', '/', (op) => operator(op, 1))
+    .with('*', '/', '%', (op) => operator(op, 1))
     .otherwise((value) => {
       throw new Error(`Unsupported non-numeric token "${value}"`)
     })

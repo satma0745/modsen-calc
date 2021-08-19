@@ -42,7 +42,7 @@
 #### Additional functionality
 
 - [x] Support for short real numbers format within the range (0; 1): e.g. `.745` instead of `0.745`
-- [ ] Implement the modulus operation: `17 % 10 = 7`
+- [x] Implement the modulus operation: `17 % 10 = 7`
 
 ### How the application should look
 

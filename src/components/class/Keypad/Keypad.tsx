@@ -27,7 +27,7 @@ class Controller extends PureComponent<Props> {
       .with('CE', () => this.props.clearEntry())
       .with('=', () => this.props.onEquals())
       .with('+/-', () => this.props.changeSign())
-      .with('+', '-', '*', '/', '(', ')', () => this.props.addNonNumeric(key))
+      .with('+', '-', '*', '/', '%', '(', ')', () => this.props.addNonNumeric(key))
       .with('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', () => this.props.addNumeric(key))
       .otherwise(() => {
         throw new Error(`Unsupported key "${key}"`)

@@ -9,6 +9,7 @@ const performOperation = (operator: Operator, left: number, right: number): numb
     .with({ operator: '-' }, () => left - right)
     .with({ operator: '*' }, () => left * right)
     .with({ operator: '/' }, () => left / right)
+    .with({ operator: '%' }, () => left % right)
     .exhaustive()
 }
 

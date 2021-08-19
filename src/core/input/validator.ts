@@ -9,7 +9,7 @@ const validateNumeric = (token: InputToken) => {
   return !isNaN(Number(token.value))
 }
 
-const supportedNonNumerics = ['+', '-', '*', '/', '(', ')']
+const supportedNonNumerics = ['+', '-', '*', '/', '%', '(', ')']
 const validateNonNumeric = (token: InputToken) => {
   return supportedNonNumerics.includes(token.value)
 }

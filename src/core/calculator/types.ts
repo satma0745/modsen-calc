@@ -1,4 +1,4 @@
-type OperatorKind = '+' | '-' | '*' | '/'
+type OperatorKind = '+' | '-' | '*' | '/' | '%'
 type OperatorPriority = 0 | 1
 type Operator = {
   kind: 'operator'
