@@ -10,6 +10,7 @@ type SideEffect = () => void
 
 interface Props {
   isError: boolean
+  showHistory: boolean
   onEquals: SideEffect
   onKeyPress: SideEffect
 }
@@ -22,17 +23,21 @@ class Calculator extends Component<Props> {
   render(): JSX.Element {
     return (
       <Surface>
-        <Section scale={1.8}>
+        <Section scale={2}>
           <Display isError={this.props.isError} />
           <Separator kind="horizontal" />
           <Keypad onEquals={this.props.onEquals} onKeyPress={this.props.onKeyPress} />
         </Section>
 
-        <Separator kind="vertical" />
+        {this.props.showHistory && (
+          <Section orientation="horizontal">
+            <Separator kind="vertical" />
 
-        <Section grow={1}>
-          <History />
-        </Section>
+            <Section>
+              <History />
+            </Section>
+          </Section>
+        )}
       </Surface>
     )
   }

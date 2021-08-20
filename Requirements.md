@@ -16,7 +16,7 @@
 - [x] **Calculator** - Logic root and data manager.
 - [x] **Display** - Displays current expression and calculation result.
 - [x] **History** - Displays a list of the previously computed expressions.
-- [ ] **ControlPanel** - Non-computational operations (e.g. show/hide history).
+- [x] **ControlPanel** - Non-computational operations (e.g. show/hide history).
 - [x] **Keypad** - Computational operations (operands and operators).
 
 ![Component diagram](./docs/components.png)
@@ -35,9 +35,8 @@
 - [x] Change sign key
 
 #### History
-- [ ] Show/hide history
-- [ ] See history
-- [ ] Clear history
+- [x] Show/hide history
+- [x] Clear history
 
 #### Additional functionality
 

@@ -7,7 +7,15 @@ const isValidPreferences = (candidate: any) => {
     return false
   }
 
-  return candidate.theme === 'light' || candidate.theme === 'dark'
+  if (candidate.theme !== 'light' && candidate.theme !== 'dark') {
+    return false
+  }
+
+  if (typeof candidate.showHistory !== 'boolean') {
+    return false
+  }
+
+  return true
 }
 
 const loadAppearance = (): AppearanceState | null => {

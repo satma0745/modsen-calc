@@ -6,6 +6,9 @@ interface Props {
 }
 
 const Button = styled.button`
+  display: block;
+  margin: 0 auto;
+
   width: 2.5em;
   height: 2.5em;
 

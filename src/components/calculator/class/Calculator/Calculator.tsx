@@ -9,9 +9,11 @@ import { addNumeric, clearAll, inputSelector } from '@redux/reducers/input'
 import { RootState } from '@redux/store'
 
 import Presentation from './Presentation'
+import { appearanceSelector } from '@redux/reducers/appearance'
 
 interface Props {
   inputs: ReturnType<typeof inputSelector>
+  showHistory: boolean
   add: typeof addRecord
   clearAll: typeof clearAll
   addNumeric: typeof addNumeric
@@ -52,12 +54,20 @@ class Calculator extends Component<Props, State> {
   }
 
   render(): JSX.Element {
-    return <Presentation isError={this.state.isError} onEquals={this.onEquals} onKeyPress={this.resetError} />
+    return (
+      <Presentation
+        showHistory={this.props.showHistory}
+        isError={this.state.isError}
+        onEquals={this.onEquals}
+        onKeyPress={this.resetError}
+      />
+    )
   }
 }
 
 const mapStateToProps = (state: RootState) => ({
   inputs: inputSelector(state),
+  showHistory: appearanceSelector(state).showHistory,
 })
 
 const mapDispatchToProps = { add: addRecord, addNumeric, clearAll }

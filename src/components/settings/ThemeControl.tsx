@@ -1,10 +1,10 @@
 import React, { ChangeEvent, FC, memo, useCallback } from 'react'
 
-import { useDispatch, useThemeSelector } from '@redux/hooks'
+import { useDispatch, useAppearanceSelector } from '@redux/hooks'
 import { changeTheme } from '@redux/reducers/appearance'
 
 const ThemeControl: FC = () => {
-  const themeKind = useThemeSelector()
+  const { theme: themeKind } = useAppearanceSelector()
   const dispatch = useDispatch()
 
   const onSelect = useCallback(

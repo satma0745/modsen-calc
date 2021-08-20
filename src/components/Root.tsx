@@ -5,12 +5,12 @@ import { BrowserRouter } from 'react-router-dom'
 
 import { selectTheme } from '@core/theming'
 import store from '@redux/store'
-import { useThemeSelector } from '@redux/hooks'
+import { useAppearanceSelector } from '@redux/hooks'
 
 import Application from './Application'
 
 const ThemeProvider: FC = ({ children }) => {
-  const themeKind = useThemeSelector()
+  const { theme: themeKind } = useAppearanceSelector()
   const theme = useMemo(() => selectTheme(themeKind), [themeKind])
 
   return <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>

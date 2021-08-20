@@ -1,5 +1,7 @@
 import React, { FC, memo } from 'react'
 
+import { useAppearanceSelector } from '@redux/hooks'
+
 import { Section, Separator, Surface } from '@components/calculator/shared/calculator'
 import ErrorBoundary from '@components/calculator/shared/ErrorBoundary'
 
@@ -10,21 +12,26 @@ import History from '../History'
 import useCalculator from './useCalculator'
 
 const Calculator: FC = () => {
+  const { showHistory } = useAppearanceSelector()
   const { isError, onEquals, resetError } = useCalculator()
 
   return (
     <Surface>
-      <Section scale={1.8}>
+      <Section scale={2}>
         <Display isError={isError} />
         <Separator kind="horizontal" />
         <Keypad onEquals={onEquals} onKeyPress={resetError} />
       </Section>
 
-      <Separator kind="vertical" />
+      {showHistory && (
+        <Section orientation="horizontal">
+          <Separator kind="vertical" />
 
-      <Section grow={1}>
-        <History />
-      </Section>
+          <Section>
+            <History />
+          </Section>
+        </Section>
+      )}
     </Surface>
   )
 }

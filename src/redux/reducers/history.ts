@@ -12,13 +12,16 @@ const historySlice = createSlice({
       const record = action.payload
       history.push(record)
     },
+    clearHistory: (history) => {
+      history.splice(0)
+    },
   },
 })
 
 const reducer = historySlice.reducer
 
-const { addRecord } = historySlice.actions
+const { addRecord, clearHistory } = historySlice.actions
 const historySelector = (state: RootState): string[] => state.history
 
 export default reducer
-export { addRecord, historySelector }
+export { addRecord, historySelector, clearHistory }

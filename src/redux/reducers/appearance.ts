@@ -5,10 +5,12 @@ import { RootState } from '../store'
 
 type State = {
   theme: ThemeKind
+  showHistory: boolean
 }
 
 const initialState: State = {
   theme: 'light',
+  showHistory: true,
 }
 
 const appearanceSlice = createSlice({
@@ -21,13 +23,16 @@ const appearanceSlice = createSlice({
     changeTheme: (appearance, action: PayloadAction<ThemeKind>) => {
       appearance.theme = action.payload
     },
+    toggleHistory: (appearance) => {
+      appearance.showHistory = !appearance.showHistory
+    },
   },
 })
 
 const reducer = appearanceSlice.reducer
 
-const { hydrate, changeTheme } = appearanceSlice.actions
-const themeSelector = (state: RootState): ThemeKind => state.appearance.theme
+const { hydrate, changeTheme, toggleHistory } = appearanceSlice.actions
+const appearanceSelector = (state: RootState): State => state.appearance
 
 export default reducer
-export { State as AppearanceState, hydrate, changeTheme, themeSelector }
+export { State as AppearanceState, hydrate, changeTheme, toggleHistory, appearanceSelector }
