@@ -1,4 +1,4 @@
-import React, { FC, memo } from 'react'
+import React, { FC, memo, useEffect, useRef } from 'react'
 
 import { useHistorySelector } from '@redux/hooks'
 
@@ -8,13 +8,25 @@ import ErrorBoundary from '@components/calculator/shared/ErrorBoundary'
 const History: FC = () => {
   const history = useHistorySelector()
 
+  const lastRecord = useRef<HTMLLIElement>(null)
+  useEffect(() => {
+    if (lastRecord.current !== null) {
+      lastRecord.current.scrollIntoView()
+    }
+  }, [history, lastRecord.current])
+
   return (
     <Container>
       <Header>History</Header>
       <List>
-        {history.map((record, index) => (
-          <Record key={index}>{record}</Record>
-        ))}
+        {history.map((record, index) => {
+          const ref = index === history.length - 1 ? lastRecord : undefined
+          return (
+            <Record key={index} ref={ref}>
+              {record}
+            </Record>
+          )
+        })}
       </List>
     </Container>
   )

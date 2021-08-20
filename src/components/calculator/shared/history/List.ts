@@ -1,10 +1,14 @@
 import styled from 'styled-components'
 
 const List = styled.ul`
-  margin: 0;
-  padding: 0;
+  max-height: 35em;
+  overflow-y: hidden;
+
   display: flex;
   flex-direction: column-reverse;
+
+  margin: 0;
+  padding: 0;
   list-style: none;
 `
 
