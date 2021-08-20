@@ -10,7 +10,7 @@ import { inputSelector } from '@redux/reducers/input'
 import { Container } from '@components/calculator/shared/display'
 
 interface PublicProps {
-  answer: string | undefined
+  isError: boolean
 }
 
 interface Props extends PublicProps {
@@ -23,10 +23,11 @@ class Display extends Component<Props> {
   }
 
   get display() {
-    return match<[number, string | undefined]>([this.props.inputs.length, this.props.answer])
-      .with([0, undefined], () => '0')
-      .with([0, __.string], ([_, answer]) => answer)
-      .otherwise(() => prettify(this.props.inputs))
+    return match<[number, boolean]>([this.props.inputs.length, this.props.isError])
+      .with([0, true], () => 'Error')
+      .with([0, false], () => '0')
+      .with([__, __], () => prettify(this.props.inputs))
+      .exhaustive()
   }
 
   render(): JSX.Element {

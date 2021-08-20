@@ -10,14 +10,14 @@ import History from '../History'
 import useCalculator from './useCalculator'
 
 const Calculator: FC = () => {
-  const { answer, onEquals } = useCalculator()
+  const { isError, onEquals, resetError } = useCalculator()
 
   return (
     <Surface>
       <Section scale={1.8}>
-        <Display answer={answer} />
+        <Display isError={isError} />
         <Separator kind="horizontal" />
-        <Keypad onEquals={onEquals} />
+        <Keypad onEquals={onEquals} onKeyPress={resetError} />
       </Section>
 
       <Separator kind="vertical" />

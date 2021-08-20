@@ -6,9 +6,12 @@ import Display from '../Display'
 import History from '../History'
 import Keypad from '../Keypad'
 
+type SideEffect = () => void
+
 interface Props {
-  onEquals: () => void
-  answer: string | undefined
+  isError: boolean
+  onEquals: SideEffect
+  onKeyPress: SideEffect
 }
 
 class Calculator extends Component<Props> {
@@ -20,9 +23,9 @@ class Calculator extends Component<Props> {
     return (
       <Surface>
         <Section scale={1.8}>
-          <Display answer={this.props.answer} />
+          <Display isError={this.props.isError} />
           <Separator kind="horizontal" />
-          <Keypad onEquals={this.props.onEquals} />
+          <Keypad onEquals={this.props.onEquals} onKeyPress={this.props.onKeyPress} />
         </Section>
 
         <Separator kind="vertical" />

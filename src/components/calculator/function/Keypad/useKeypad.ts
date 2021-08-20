@@ -4,17 +4,19 @@ import { match } from 'ts-pattern'
 import { useDispatch } from '@redux/hooks'
 import { clearAll, clearEntry, addNonNumeric, addNumeric, changeSign } from '@redux/reducers/input'
 
-type OnEquals = () => void
+type SideEffect = () => void
 
 interface ReturnType {
   (_: string): void
 }
 
-const useKeypad = (onEquals: OnEquals): ReturnType => {
+const useKeypad = (onEquals: SideEffect, onEachKeyPress: SideEffect): ReturnType => {
   const dispatch = useDispatch()
 
   const onKeyPress = useCallback(
     (key: string) => {
+      onEachKeyPress()
+
       match(key)
         .with('C', () => dispatch(clearAll()))
         .with('CE', () => dispatch(clearEntry()))

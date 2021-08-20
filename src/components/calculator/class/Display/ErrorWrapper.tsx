@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
-import ErrorBoundary from '@components/calculator/shared/ErrorBoundary'
 
+import ErrorBoundary from '@components/calculator/shared/ErrorBoundary'
 import Display, { Props } from './Display'
 
 class ErrorWrapper extends PureComponent<Props> {

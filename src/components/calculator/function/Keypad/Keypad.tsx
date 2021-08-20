@@ -7,6 +7,7 @@ import useKeypad from './useKeypad'
 
 interface Props {
   onEquals: () => void
+  onKeyPress: () => void
 }
 
 const keys = [
@@ -17,8 +18,8 @@ const keys = [
   ['+/-', '%'],
 ].flatMap((x) => x)
 
-const Keypad: FC<Props> = ({ onEquals }) => {
-  const onKeyPress = useKeypad(onEquals)
+const Keypad: FC<Props> = ({ onEquals, onKeyPress: onEachKeyPress }) => {
+  const onKeyPress = useKeypad(onEquals, onEachKeyPress)
 
   return (
     <Grid>

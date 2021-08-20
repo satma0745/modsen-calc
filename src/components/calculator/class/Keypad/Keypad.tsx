@@ -5,8 +5,11 @@ import { match } from 'ts-pattern'
 import { clearAll, clearEntry, changeSign, addNumeric, addNonNumeric } from '@redux/reducers/input'
 import Presentation from './Presentation'
 
+type SideEffect = () => void
+
 interface PublicProps {
-  onEquals: () => void
+  onEquals: SideEffect
+  onKeyPress: SideEffect
 }
 
 interface Props extends PublicProps {
@@ -25,6 +28,8 @@ class Controller extends PureComponent<Props> {
   }
 
   private onKeyPress(key: string) {
+    this.props.onKeyPress()
+
     match(key)
       .with('C', () => this.props.clearAll())
       .with('CE', () => this.props.clearEntry())

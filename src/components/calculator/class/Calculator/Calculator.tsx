@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { __, match } from 'ts-pattern'
 import { connect } from 'react-redux'
 
 import calculate from '@core/calculator'
@@ -19,38 +18,41 @@ interface Props {
 }
 
 interface State {
-  answer: string | undefined
+  isError: boolean
 }
 
 class Calculator extends Component<Props, State> {
   state: State = {
-    answer: undefined,
+    isError: false,
   }
 
   constructor(props: Props) {
     super(props)
 
     this.onEquals = this.onEquals.bind(this)
+    this.resetError = this.resetError.bind(this)
   }
 
-  onEquals(): void {
-    const answer = match(calculate(this.props.inputs))
-      .with(__.number, (answer) => answer.toString())
-      .otherwise(() => 'Error')
+  private onEquals(): void {
+    const answer = calculate(this.props.inputs).toString()
+    this.setState({ isError: answer === 'Error' })
 
     const expression = prettify(this.props.inputs)
     const record = `${expression} = ${answer}`
     this.props.add(record)
 
     this.props.clearAll()
-
     if (answer !== 'Error') {
       this.props.addNumeric(answer)
     }
   }
 
+  private resetError() {
+    this.setState({ isError: false })
+  }
+
   render(): JSX.Element {
-    return <Presentation answer={this.state.answer} onEquals={this.onEquals} />
+    return <Presentation isError={this.state.isError} onEquals={this.onEquals} onKeyPress={this.resetError} />
   }
 }
 

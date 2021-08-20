@@ -13,13 +13,28 @@ const validatePair = (left: ExpressionToken, right: ExpressionToken) => {
     .exhaustive()
 }
 
+const validateBrackets = (expression: Expression) =>
+  expression.reduce(
+    (depth, token) =>
+      match(token)
+        .with({ kind: 'bracket', open: true }, () => depth + 1)
+        .with({ kind: 'bracket', open: false }, () => depth - 1)
+        .otherwise(() => depth),
+    0,
+  ) === 0
+
 const validate = (expression: Expression): boolean => {
+  const validBrackets = validateBrackets(expression)
+  if (!validBrackets) {
+    return false
+  }
+
   for (let index = 1; index < expression.length; index += 1) {
     const left = expression[index - 1]
     const right = expression[index]
 
-    const isValid = validatePair(left, right)
-    if (!isValid) {
+    const isValidPair = validatePair(left, right)
+    if (!isValidPair) {
       return false
     }
   }

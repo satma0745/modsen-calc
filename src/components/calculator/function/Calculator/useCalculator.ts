@@ -1,5 +1,4 @@
 import { useCallback, useState } from 'react'
-import { __, match } from 'ts-pattern'
 
 import calculate from '@core/calculator'
 import { prettify } from '@core/input'
@@ -9,19 +8,20 @@ import { addNumeric, clearAll } from '@redux/reducers/input'
 import { useDispatch, useInputSelector } from '@redux/hooks'
 
 interface ReturnType {
-  answer: string | undefined
+  isError: boolean
   onEquals: () => void
+  resetError: () => void
 }
 
 const useCalculator = (): ReturnType => {
-  const [answer, setAnswer] = useState<string | undefined>()
+  const [isError, setIsError] = useState(false)
+
   const dispatch = useDispatch()
   const inputs = useInputSelector()
 
   const onEquals = useCallback(() => {
-    const answer = match(calculate(inputs))
-      .with(__.number, (answer) => answer.toString())
-      .otherwise(() => 'Error')
+    const answer = calculate(inputs).toString()
+    setIsError(answer === 'Error')
 
     const expression = prettify(inputs)
     const record = `${expression} = ${answer}`
@@ -31,9 +31,13 @@ const useCalculator = (): ReturnType => {
     if (answer !== 'Error') {
       dispatch(addNumeric(answer))
     }
-  }, [inputs, setAnswer])
+  }, [inputs, setIsError])
 
-  return { answer, onEquals }
+  const resetError = useCallback(() => {
+    setIsError(false)
+  }, [setIsError])
+
+  return { isError, onEquals, resetError }
 }
 
 export default useCalculator

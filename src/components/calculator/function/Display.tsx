@@ -8,18 +8,21 @@ import { Container } from '@components/calculator/shared/display'
 import ErrorBoundary from '@components/calculator/shared/ErrorBoundary'
 
 interface Props {
-  answer: string | undefined
+  isError: boolean
 }
 
-const Display: FC<Props> = ({ answer }) => {
+const Display: FC<Props> = ({ isError }) => {
   const inputs = useInputSelector()
 
-  const display = useMemo(() => {
-    return match<[number, string | undefined]>([inputs.length, answer])
-      .with([0, undefined], () => '0')
-      .with([0, __.string], ([_, answer]) => answer)
-      .otherwise(() => prettify(inputs))
-  }, [inputs, answer])
+  const display = useMemo(
+    () =>
+      match<[number, boolean]>([inputs.length, isError])
+        .with([0, true], () => 'Error')
+        .with([0, false], () => '0')
+        .with([__, __], () => prettify(inputs))
+        .exhaustive(),
+    [inputs, isError],
+  )
 
   return <Container>{display}</Container>
 }
