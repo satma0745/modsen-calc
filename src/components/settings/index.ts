@@ -1,2 +1,2 @@
-export { default as HistoryControl } from './HistoryControl'
-export { default as ThemeControl } from './ThemeControl'
+export { default as HistorySection } from './HistorySection'
+export { default as ThemeSection } from './ThemeSection'

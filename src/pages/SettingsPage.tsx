@@ -1,11 +1,11 @@
 import React, { FC } from 'react'
-import { HistoryControl, ThemeControl } from '@components/settings'
+import { HistorySection, ThemeSection } from '@components/settings'
 
 const SettingsPage: FC = () => (
   <div>
     <h1>Settings</h1>
-    <ThemeControl />
-    <HistoryControl />
+    <ThemeSection />
+    <HistorySection />
   </div>
 )
 
