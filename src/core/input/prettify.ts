@@ -8,14 +8,13 @@ const prettifyToken = (token: InputToken) => {
       return match(nonNumeric.value)
         .with('(', () => ' (')
         .with(')', () => ') ')
-        .with('+', '-', '*', '/', '%', (operator) => ` ${operator} `)
-        .otherwise((value) => value)
+        .otherwise((operator) => ` ${operator} `)
     })
     .exhaustive()
 }
 
 const prettifyExpression = (expression: Input): string => {
-  return expression.map(prettifyToken).join('')
+  return expression.map(prettifyToken).join('').replace(/\s\s/g, ' ')
 }
 
 export default prettifyExpression
