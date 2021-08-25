@@ -1,16 +1,19 @@
 import React, { PureComponent } from 'react'
 import ErrorBoundary from '@components/calculator/shared/ErrorBoundary'
+import History, { Props } from './Pure'
 
-import History from './History'
+class HistoryWithErrorBoundary extends PureComponent<Props> {
+  constructor(props: Props) {
+    super(props)
+  }
 
-class ErrorWrapper extends PureComponent {
   render(): JSX.Element {
     return (
       <ErrorBoundary errorMessage="History just crashed 😢">
-        <History />
+        <History {...this.props} />
       </ErrorBoundary>
     )
   }
 }
 
-export default ErrorWrapper
+export default HistoryWithErrorBoundary

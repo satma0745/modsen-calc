@@ -13,7 +13,7 @@ interface Props {
   onKeyPress: (_: string) => void
 }
 
-class Keypad extends PureComponent<Props> {
+class KeypadPresentation extends PureComponent<Props> {
   constructor(props: Props) {
     super(props)
   }
@@ -31,4 +31,4 @@ class Keypad extends PureComponent<Props> {
   }
 }
 
-export default Keypad
+export default KeypadPresentation

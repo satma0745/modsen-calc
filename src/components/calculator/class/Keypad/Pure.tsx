@@ -1,35 +1,25 @@
 import React, { PureComponent } from 'react'
-import { connect } from 'react-redux'
 import { match } from 'ts-pattern'
-
-import { clearAll, clearEntry, changeSign, addNumeric, addNonNumeric } from '@redux/reducers/input'
 import Presentation from './Presentation'
 
-type SideEffect = () => void
-
-interface PublicProps {
-  onEquals: SideEffect
-  onKeyPress: SideEffect
+interface Props {
+  onEquals: () => void
+  onKeyPress: () => void
+  clearAll: () => void
+  clearEntry: () => void
+  changeSign: () => void
+  addNumeric: (_: string) => void
+  addNonNumeric: (_: string) => void
 }
 
-interface Props extends PublicProps {
-  clearAll: typeof clearAll
-  clearEntry: typeof clearEntry
-  changeSign: typeof changeSign
-  addNumeric: typeof addNumeric
-  addNonNumeric: typeof addNonNumeric
-}
-
-class Controller extends PureComponent<Props> {
+class PureKeypad extends PureComponent<Props> {
   constructor(props: Props) {
     super(props)
-
     this.onKeyPress = this.onKeyPress.bind(this)
   }
 
   private onKeyPress(key: string) {
     this.props.onKeyPress()
-
     match(key)
       .with('C', () => this.props.clearAll())
       .with('CE', () => this.props.clearEntry())
@@ -47,7 +37,5 @@ class Controller extends PureComponent<Props> {
   }
 }
 
-const mapDispatchToProps = { clearAll, clearEntry, changeSign, addNumeric, addNonNumeric }
-
-export default connect(null, mapDispatchToProps)(Controller)
-export { PublicProps as Props }
+export default PureKeypad
+export { Props }

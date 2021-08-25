@@ -1,3 +1,3 @@
-import Display from './Display'
+import Display from './WithErrorBoundary'
 
 export default Display

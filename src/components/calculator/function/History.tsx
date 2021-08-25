@@ -1,13 +1,13 @@
 import React, { FC, memo, useEffect, useRef } from 'react'
 
-import { useHistorySelector } from '@redux/hooks'
-
 import { Container, Header, List, Record } from '@components/calculator/shared/history'
 import ErrorBoundary from '@components/calculator/shared/ErrorBoundary'
 
-const History: FC = () => {
-  const history = useHistorySelector()
+interface Props {
+  history: string[]
+}
 
+const PureHistory: FC<Props> = ({ history }) => {
   const lastRecord = useRef<HTMLLIElement>(null)
   useEffect(() => {
     if (lastRecord.current !== null) {
@@ -31,11 +31,12 @@ const History: FC = () => {
     </Container>
   )
 }
+const PureHistoryMemo = memo(PureHistory)
 
-const ErrorWrapper: FC = () => (
+const HistoryWithErrorBoundary: FC<Props> = (props) => (
   <ErrorBoundary errorMessage="History just crashed 😢">
-    <History />
+    <PureHistoryMemo {...props} />
   </ErrorBoundary>
 )
 
-export default memo(ErrorWrapper)
+export default memo(HistoryWithErrorBoundary)

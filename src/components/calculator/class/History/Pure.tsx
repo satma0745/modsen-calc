@@ -1,20 +1,15 @@
 import React, { createRef, PureComponent, RefObject } from 'react'
-import { connect } from 'react-redux'
-
-import { historySelector } from '@redux/reducers/history'
-import { RootState } from '@redux/store'
-
 import { Container, Header, List, Record } from '@components/calculator/shared/history'
 
 interface Props {
-  history: ReturnType<typeof historySelector>
+  history: string[]
 }
 
 interface State {
   lastRecord: RefObject<HTMLLIElement> | undefined
 }
 
-class History extends PureComponent<Props, State> {
+class PureHistory extends PureComponent<Props, State> {
   state: State = {
     lastRecord: undefined,
   }
@@ -25,7 +20,7 @@ class History extends PureComponent<Props, State> {
     this.state.lastRecord = createRef<HTMLLIElement>()
   }
 
-  componentDidUpdate(prevProps: Readonly<Props>) {
+  componentDidUpdate(prevProps: Readonly<Props>): void {
     if (prevProps.history !== this.props.history) {
       this.state.lastRecord?.current?.scrollIntoView()
     }
@@ -50,8 +45,5 @@ class History extends PureComponent<Props, State> {
   }
 }
 
-const mapStateToProps = (state: RootState) => ({
-  history: historySelector(state),
-})
-
-export default connect(mapStateToProps)(History)
+export default PureHistory
+export { Props }

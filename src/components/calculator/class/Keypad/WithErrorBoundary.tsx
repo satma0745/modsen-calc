@@ -1,20 +1,19 @@
 import React, { PureComponent } from 'react'
-
 import ErrorBoundary from '@components/calculator/shared/ErrorBoundary'
-import Display, { Props } from './Display'
+import Keypad, { Props } from './Pure'
 
-class ErrorWrapper extends PureComponent<Props> {
+class KeypadWithErrorBoundary extends PureComponent<Props> {
   constructor(props: Props) {
     super(props)
   }
 
   render(): JSX.Element {
     return (
-      <ErrorBoundary errorMessage="Display just crashed 😢">
-        <Display {...this.props} />
+      <ErrorBoundary errorMessage="Keypad just crashed 😢">
+        <Keypad {...this.props} />
       </ErrorBoundary>
     )
   }
 }
 
-export default ErrorWrapper
+export default KeypadWithErrorBoundary

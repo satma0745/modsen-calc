@@ -1,3 +1,5 @@
-import ErrorWrapper from './ErrorWrapper'
+import Calculator from './WithRedux'
+import PureCalculator from './WithErrorBoundary'
 
-export default ErrorWrapper
+export default Calculator
+export { PureCalculator }

@@ -1,16 +1,19 @@
 import React, { PureComponent } from 'react'
 import ErrorBoundary from '@components/calculator/shared/ErrorBoundary'
+import Calculator, { Props } from './Pure'
 
-import Calculator from './Calculator'
+class CalculatorWithErrorBoundary extends PureComponent<Props> {
+  constructor(props: Props) {
+    super(props)
+  }
 
-class ErrorWrapper extends PureComponent {
   render(): JSX.Element {
     return (
       <ErrorBoundary errorMessage="Calculator just crashed 😢">
-        <Calculator />
+        <Calculator {...this.props} />
       </ErrorBoundary>
     )
   }
 }
 
-export default ErrorWrapper
+export default CalculatorWithErrorBoundary

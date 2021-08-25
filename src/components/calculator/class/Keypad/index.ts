@@ -1,3 +1,3 @@
-import ErrorWrapper from './ErrorWrapper'
+import KeypadWithErrorBoundary from './WithErrorBoundary'
 
-export default ErrorWrapper
+export default KeypadWithErrorBoundary

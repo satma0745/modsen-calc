@@ -1,3 +1,5 @@
-import Calculator from './Calculator'
+import CalculatorWithRedux from './WithRedux'
+import PureCalculator from './Pure'
 
-export default Calculator
+export default CalculatorWithRedux
+export { PureCalculator }

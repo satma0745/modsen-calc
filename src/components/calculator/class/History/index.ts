@@ -1,3 +1,3 @@
-import ErrorWrapper from './ErrorWrapper'
+import History from './WithErrorBoundary'
 
-export default ErrorWrapper
+export default History
