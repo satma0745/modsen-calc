@@ -75,8 +75,8 @@ Settings page: ![Settings page layout](./docs/page-settings.png)
 
 Coverage:
 - [ ] Operators.
-- [ ] History.
-- [ ] Display.
+- [x] History.
+- [x] Display.
 - [ ] Keypad.
 - [ ] Navigation.
 - [ ] Theming.

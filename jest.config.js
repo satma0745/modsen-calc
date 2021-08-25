@@ -1,6 +1,7 @@
 const config = {
   preset: 'ts-jest',
-  testMatch: ['**/tests/**/*.test.[jt]s'],
+  testMatch: ['**/tests/**/*.test.[jt]s?(x)'],
+  testEnvironment: 'jsdom',
   moduleNameMapper: {
     '^~(.*)$': '<rootDir>/src$1',
     '^@components(.*)$': '<rootDir>/src/components$1',
