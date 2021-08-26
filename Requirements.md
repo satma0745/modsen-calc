@@ -74,9 +74,9 @@ Settings page: ![Settings page layout](./docs/page-settings.png)
 ## Testing
 
 Coverage:
-- [ ] Operators.
+- [x] Operators.
 - [x] History.
 - [x] Display.
-- [ ] Keypad.
+- [x] Keypad.
 - [ ] Navigation.
 - [ ] Theming.
