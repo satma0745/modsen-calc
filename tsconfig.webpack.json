@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "jsx": "react",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": ["dom", "esnext"],
+    "strict": true,
+    "sourceMap": true,
+    "target": "esnext",
+    "baseUrl": "./",
+    "paths": {
+      "~": ["src"],
+      "~/*": ["src/*"],
+      "@components": ["src/components"],
+      "@components/*": ["src/components/*"],
+      "@core": ["src/core"],
+      "@core/*": ["src/core/*"],
+      "@pages": ["src/pages"],
+      "@pages/*": ["src/pages/*"],
+      "@redux": ["src/redux"],
+      "@redux/*": ["src/redux/*"]
+    }
+  },
+  "exclude": ["node_modules", "tests"]
+}

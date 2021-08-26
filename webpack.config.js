@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const production = process.env.NODE_ENV?.trim() === 'production'
+const path = require('path')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const path = require('path')
+
+const production = process.env.NODE_ENV?.trim() === 'production'
 
 module.exports = {
   mode: production ? 'production' : 'development',
@@ -20,7 +21,14 @@ module.exports = {
         resolve: {
           extensions: ['.ts', '.tsx', '.json'],
         },
-        use: 'ts-loader',
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              configFile: 'tsconfig.webpack.json',
+            },
+          },
+        ],
       },
       {
         test: /\.css$/,
