@@ -14,7 +14,7 @@ class CalculatorPage extends PureComponent {
   render(): JSX.Element {
     return (
       <PositioningWrapper>
-        <Calculator />
+        <Calculator data-testid="calculator" />
       </PositioningWrapper>
     )
   }

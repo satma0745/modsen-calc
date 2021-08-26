@@ -28,6 +28,7 @@ const PureCalculator: FC<Props> = ({
   changeSign,
   addNumericInput,
   addNonNumericInput,
+  ...props
 }) => {
   const [isError, setIsError] = useState(false)
   const resetError = useCallback(() => {
@@ -49,7 +50,7 @@ const PureCalculator: FC<Props> = ({
   }, [input, setIsError, addHistoryRecord, clearInput, addNumericInput])
 
   return (
-    <Surface>
+    <Surface {...props}>
       <Section scale={2}>
         <Display isError={isError} input={input} />
         <Separator kind="horizontal" />

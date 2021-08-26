@@ -58,7 +58,7 @@ class PureCalculator extends PureComponent<Props, State> {
 
   render(): JSX.Element {
     return (
-      <Surface>
+      <Surface {...this.props}>
         <Section scale={2}>
           <Display isError={this.state.isError} input={this.props.input} />
           <Separator kind="horizontal" />

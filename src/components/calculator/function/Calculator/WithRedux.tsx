@@ -7,7 +7,7 @@ import { useAppearanceSelector, useDispatch, useHistorySelector, useInputSelecto
 
 import Calculator from './WithErrorBoundary'
 
-const CalculatorWithRedux: FC = () => {
+const CalculatorWithRedux: FC = (props) => {
   const input = useInputSelector()
   const { showHistory } = useAppearanceSelector()
   const history = useHistorySelector()
@@ -29,7 +29,7 @@ const CalculatorWithRedux: FC = () => {
     [dispatch],
   )
 
-  return <Calculator input={input} history={history} showHistory={showHistory} {...actions} />
+  return <Calculator input={input} history={history} showHistory={showHistory} {...actions} {...props} />
 }
 
 export default memo(CalculatorWithRedux)

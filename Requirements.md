@@ -78,5 +78,5 @@ Coverage:
 - [x] History.
 - [x] Display.
 - [x] Keypad.
-- [ ] Navigation.
+- [x] Navigation.
 - [x] Theming.

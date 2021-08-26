@@ -12,7 +12,7 @@ const PositioningWrapper = styled.div`
 
 const CalculatorPage: FC = () => (
   <PositioningWrapper>
-    <Calculator />
+    <Calculator data-testid="calculator" />
   </PositioningWrapper>
 )
 
