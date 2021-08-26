@@ -21,7 +21,7 @@ const Container = styled.div`
 const Application: FC = () => (
   <Container>
     <Header />
-    <Page>
+    <Page data-testid="page">
       <PageSwitch />
     </Page>
   </Container>

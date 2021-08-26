@@ -79,4 +79,4 @@ Coverage:
 - [x] Display.
 - [x] Keypad.
 - [ ] Navigation.
-- [ ] Theming.
+- [x] Theming.

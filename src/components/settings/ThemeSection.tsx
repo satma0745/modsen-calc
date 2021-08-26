@@ -31,7 +31,7 @@ const ThemeSection: FC = () => {
 
       <p>
         You are currently using
-        <Select value={theme} onSelect={selectTheme} options={themingOptions} />
+        <Select data-testid="theme-select" value={theme} onSelect={selectTheme} options={themingOptions} />
       </p>
     </Section>
   )
