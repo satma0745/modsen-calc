@@ -3,9 +3,10 @@ import { render, within } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import History from '@components/calculator/function/History'
+import { mockScrollIntoView } from '../shared'
 
 beforeAll(() => {
-  Element.prototype.scrollIntoView = jest.fn()
+  mockScrollIntoView()
 })
 
 it('all records appear', () => {

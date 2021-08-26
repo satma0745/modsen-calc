@@ -14,7 +14,7 @@ interface Props {
 }
 
 const KeypadPresentation: FC<Props> = ({ onKeyPress }) => (
-  <Grid>
+  <Grid data-testid="keypad">
     {keys.map((label) => (
       <Button key={label} onClick={() => onKeyPress(label)}>
         {label}

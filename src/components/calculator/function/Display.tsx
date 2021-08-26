@@ -22,7 +22,7 @@ const PureDisplay: FC<Props> = ({ isError, input }) => {
     [input, isError],
   )
 
-  return <Container>{display}</Container>
+  return <Container data-testid="display">{display}</Container>
 }
 const PureDisplayMemo = memo(PureDisplay)
 

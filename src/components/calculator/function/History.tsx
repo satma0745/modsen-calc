@@ -18,7 +18,7 @@ const PureHistory: FC<Props> = ({ history }) => {
   return (
     <Container>
       <Header>History</Header>
-      <List>
+      <List data-testid="history">
         {history.map((record, index) => {
           const ref = index === history.length - 1 ? lastRecord : undefined
           return (

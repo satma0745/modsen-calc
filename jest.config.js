@@ -7,7 +7,8 @@ const config = {
     '^@components(.*)$': '<rootDir>/src/components$1',
     '^@core(.*)$': '<rootDir>/src/core$1',
     '^@pages(.*)$': '<rootDir>/src/pages$1',
-    '^@redux(.*)$': '<rootDir>/src/redux$1',
+    '^@redux$': '<rootDir>/src/redux',
+    '^@redux/(.*)$': '<rootDir>/src/redux/$1',
   },
 }
 
