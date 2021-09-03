@@ -1,5 +1,3 @@
-/// <reference types="cypress" />
-
 describe('test theming', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/settings')

@@ -5,6 +5,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "lib": ["dom", "esnext"],
+    "types": ["cypress"],
     "strict": true,
     "sourceMap": true,
     "target": "esnext",
@@ -24,5 +25,5 @@
       "@tests/*": ["tests/*"]
     }
   },
-  "exclude": ["node_modules", "tests", "cypress"]
+  "exclude": ["node_modules"]
 }
