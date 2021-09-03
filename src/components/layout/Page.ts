@@ -1,9 +1,4 @@
 import styled from 'styled-components'
-import { Theme } from '@core/theming'
-
-interface Props {
-  theme: Theme
-}
 
 const Page = styled.div`
   flex-grow: 1;
@@ -14,8 +9,8 @@ const Page = styled.div`
 
   box-sizing: content-box;
 
-  background: ${({ theme }: Props) => theme.page.background};
-  color: ${({ theme }: Props) => theme.page.color};
+  background: ${({ theme }) => theme.page.background};
+  color: ${({ theme }) => theme.page.color};
 
   box-shadow: #00000001 0 0 10px 5px;
 `

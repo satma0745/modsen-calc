@@ -1,14 +1,8 @@
 import React, { FC, memo } from 'react'
 import styled from 'styled-components'
 
-import { Theme } from '@core/theming'
-
-interface StyledProps {
-  theme: Theme
-}
-
 const StyledSelect = styled.select`
-  border: 0.1em solid ${({ theme }: StyledProps) => theme.page.color};
+  border: 0.1em solid ${({ theme }) => theme.page.color};
   border-radius: 0.3em;
   margin: 0.3em;
   padding: 0.2em;
