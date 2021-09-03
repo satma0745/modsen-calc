@@ -3,7 +3,7 @@ import { fireEvent, render, within } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import Calculator from '@components/calculator/function/Calculator'
-import { StyledComponentsThemeMock, ReduxStoreProviderMock, mockScrollIntoView } from '../shared'
+import { StyledComponentsThemeMock, ReduxStoreProviderMock, mockScrollIntoView } from '@tests/shared'
 
 const Component: FC = () => (
   <ReduxStoreProviderMock>

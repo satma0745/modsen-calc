@@ -1,5 +1,5 @@
 import calculate from '@core/calculator'
-import { parseExpression } from '../shared'
+import { parseExpression } from '@tests/shared'
 
 const calc = (input: (string | number)[], answer: number | 'Error') => {
   const expression = parseExpression(input)

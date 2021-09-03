@@ -48,6 +48,7 @@ module.exports = {
       '@core': path.resolve(__dirname, 'src/core'),
       '@pages': path.resolve(__dirname, 'src/pages'),
       '@redux': path.resolve(__dirname, 'src/redux'),
+      '@tests': path.resolve(__dirname, 'tests'),
     },
   },
 }

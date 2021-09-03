@@ -1,4 +1,4 @@
-import { Input } from '../input'
+import { Input } from '@core/input'
 
 import parse from './parser'
 import validate from './validator'

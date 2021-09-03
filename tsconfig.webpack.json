@@ -19,7 +19,9 @@
       "@pages": ["src/pages"],
       "@pages/*": ["src/pages/*"],
       "@redux": ["src/redux"],
-      "@redux/*": ["src/redux/*"]
+      "@redux/*": ["src/redux/*"],
+      "@tests": ["tests"],
+      "@tests/*": ["tests/*"]
     }
   },
   "exclude": ["node_modules", "tests"]

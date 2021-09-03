@@ -9,6 +9,7 @@ const config = {
     '^@pages(.*)$': '<rootDir>/src/pages$1',
     '^@redux$': '<rootDir>/src/redux',
     '^@redux/(.*)$': '<rootDir>/src/redux/$1',
+    '^@tests(.*)$': '<rootDir>/tests$1',
   },
 }
 

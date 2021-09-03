@@ -1,5 +1,5 @@
 import { prettify } from '@core/input'
-import { parseExpression } from '../shared'
+import { parseExpression } from '@tests/shared'
 
 it('correct prettify algorithm', () => {
   const input = [2, '*', '(', 11, '+', 4, ')', '/', 6]

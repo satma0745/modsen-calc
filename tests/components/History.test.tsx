@@ -3,7 +3,7 @@ import { render, within } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import History from '@components/calculator/function/History'
-import { mockScrollIntoView } from '../shared'
+import { mockScrollIntoView } from '@tests/shared'
 
 beforeAll(() => {
   mockScrollIntoView()

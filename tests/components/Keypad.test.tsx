@@ -3,7 +3,7 @@ import { fireEvent, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import Keypad from '@components/calculator/function/Keypad'
-import { generateKeypadPropMocks, StyledComponentsThemeMock } from '../shared'
+import { generateKeypadPropMocks, StyledComponentsThemeMock } from '@tests/shared'
 
 let mocks = generateKeypadPropMocks()
 beforeEach(() => {

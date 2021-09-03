@@ -4,7 +4,7 @@ import '@testing-library/jest-dom'
 
 import { Input } from '@core/input'
 import Display from '@components/calculator/function/Display'
-import { parseExpression } from '../shared'
+import { parseExpression } from '@tests/shared'
 
 it('input is rendered correctly', () => {
   const input = parseExpression(['(', 2, '+', 2, ')', '*', 2])

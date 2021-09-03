@@ -1,5 +1,5 @@
-import { Button, Grid } from '@components/calculator/shared/keypad'
 import React, { FC, memo } from 'react'
+import { Button, Grid } from '@components/calculator/shared/keypad'
 
 const keys = [
   ['C', '7', '8', '9', '*'],

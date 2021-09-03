@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { ThemeKind } from '@core/theming'
-import { RootState } from '../store'
+import { RootState } from '@redux/store'
 
 type State = {
   theme: ThemeKind

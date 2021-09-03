@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { Input, InputToken } from '@core/input'
-import { RootState } from '../store'
+import { RootState } from '@redux/store'
 
 type State = Input
 const initialState: State = []
