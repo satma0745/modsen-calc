@@ -1,5 +1,6 @@
-import { Expression, ExpressionToken } from './types'
 import { match } from 'ts-pattern'
+
+import { Expression, ExpressionToken } from './types'
 
 const validatePair = (left: ExpressionToken, right: ExpressionToken) => {
   return match(left)

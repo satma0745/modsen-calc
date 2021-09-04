@@ -2,7 +2,6 @@ import React, { FC, memo, useCallback, useState } from 'react'
 
 import calculate from '@core/calculator'
 import { Input, prettify } from '@core/input'
-
 import { Section, Separator, Surface } from '@components/calculator/shared/calculator'
 import Display from '@components/calculator/function/Display'
 import History from '@components/calculator/function/History'

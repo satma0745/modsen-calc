@@ -1,5 +1,6 @@
-import { Expression, Literal, Operator } from './types'
 import { match } from 'ts-pattern'
+
+import { Expression, Literal, Operator } from './types'
 
 // Algorithm used to convert infix-notation expression to the postfix one:
 //

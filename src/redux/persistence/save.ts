@@ -1,4 +1,5 @@
 import { EnhancedStore } from '@reduxjs/toolkit'
+
 import { RootState } from '@redux/store'
 
 const saveAppearance = (state: RootState): void => {

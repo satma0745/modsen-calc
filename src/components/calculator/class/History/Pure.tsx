@@ -1,4 +1,5 @@
 import React, { createRef, PureComponent, RefObject } from 'react'
+
 import { Container, Header, List, Record } from '@components/calculator/shared/history'
 
 interface Props {

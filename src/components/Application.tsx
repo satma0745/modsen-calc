@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 
 import { PageSwitch } from '@pages'
+
 import { Header, Page } from './layout'
 
 const Container = styled.div`

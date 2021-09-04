@@ -3,7 +3,6 @@ import { TypedUseSelectorHook, useSelector, useDispatch } from 'react-redux'
 import { appearanceSelector } from './reducers/appearance'
 import { inputSelector } from './reducers/input'
 import { historySelector } from './reducers/history'
-
 import { RootState, Dispatch } from './store'
 
 const typedUseSelector: TypedUseSelectorHook<RootState> = useSelector

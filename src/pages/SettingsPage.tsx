@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+
 import { HistorySection, ThemeSection } from '@components/settings'
 
 const SettingsPage: FC = () => (

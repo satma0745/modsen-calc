@@ -1,5 +1,7 @@
 import { match } from 'ts-pattern'
+
 import { Input, InputToken } from '@core/input'
+
 import { Bracket, Expression, Literal, Operator, OperatorKind, OperatorPriority } from './types'
 
 const parseNumeric = (token: InputToken): Literal => {

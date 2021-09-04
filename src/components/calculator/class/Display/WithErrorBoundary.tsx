@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react'
+
 import ErrorBoundary from '@components/calculator/shared/ErrorBoundary'
+
 import Display, { Props } from './Pure'
 
 class DisplayWithErrorBoundary extends PureComponent<Props> {

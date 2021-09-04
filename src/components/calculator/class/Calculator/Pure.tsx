@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react'
 
 import calculate from '@core/calculator'
 import { Input, prettify } from '@core/input'
-
 import { Section, Separator, Surface } from '@components/calculator/shared/calculator'
 import Display from '@components/calculator/class/Display'
 import Keypad from '@components/calculator/class/Keypad'

@@ -2,7 +2,6 @@ import React, { FC, memo, useMemo } from 'react'
 import { __, match } from 'ts-pattern'
 
 import { Input, prettify } from '@core/input'
-
 import { Container } from '@components/calculator/shared/display'
 import ErrorBoundary from '@components/calculator/shared/ErrorBoundary'
 

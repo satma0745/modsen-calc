@@ -1,4 +1,5 @@
 import { match } from 'ts-pattern'
+
 import { Input, InputToken } from './types'
 
 const validateNumeric = (token: InputToken) => {

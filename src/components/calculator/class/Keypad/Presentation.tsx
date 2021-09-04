@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+
 import { Button, Grid } from '@components/calculator/shared/keypad'
 
 const keypad = [
