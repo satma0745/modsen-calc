@@ -4,19 +4,17 @@ const Button = styled.button`
   display: block;
   margin: 0 auto;
 
-  width: 2.5em;
-  height: 2.5em;
+  width: calc(${({ theme }) => theme.spacing[5]});
+  height: calc(${({ theme }) => theme.spacing[5]});
+  font-size: ${({ theme }) => theme.fontSize[4]};
 
-  font-size: 1em;
-  line-height: 1.2em;
-
-  color: ${({ theme }) => theme.calculator.button.color};
-  background: ${({ theme }) => theme.calculator.button.background};
+  color: ${({ theme }) => theme.color[0]};
+  background: ${({ theme }) => theme.background[2]};
 
   border-width: 1px;
   border-style: solid;
-  border-color: ${({ theme }) => theme.calculator.button.borderColor};
-  border-radius: 0.5em;
+  border-color: ${({ theme }) => theme.color[1]};
+  border-radius: ${({ theme }) => theme.spacing[1]};
 `
 
 export default Button

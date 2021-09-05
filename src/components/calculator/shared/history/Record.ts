@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Record = styled.li`
-  margin: 0.8em 0;
+  margin: ${({ theme }) => theme.spacing[2]} 0;
 `
 
 export default Record

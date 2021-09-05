@@ -2,11 +2,14 @@ import React, { FC, memo } from 'react'
 import styled from 'styled-components'
 
 const StyledSelect = styled.select`
-  border: 0.1em solid ${({ theme }) => theme.page.color};
-  border-radius: 0.3em;
-  margin: 0.3em;
-  padding: 0.2em;
-  font-size: 1em;
+  border: 1px solid ${({ theme }) => theme.color[0]};
+  border-radius: ${({ theme }) => theme.spacing[0]};
+  margin: 0 ${({ theme }) => theme.spacing[1]};
+  padding: ${({ theme }) => theme.spacing[0]};
+  font-size: ${({ theme }) => theme.fontSize[0]};
+`
+const StyledOption = styled.option`
+  font-size: ${({ theme }) => theme.fontSize[0]};
 `
 
 interface Option {
@@ -23,9 +26,9 @@ interface Props {
 const Select: FC<Props> = ({ value, options, onSelect, ...props }) => (
   <StyledSelect value={value} onChange={(event) => onSelect(event.target.value)} {...props}>
     {options.map(({ title, value }) => (
-      <option key={value} value={value}>
+      <StyledOption key={value} value={value}>
         {title}
-      </option>
+      </StyledOption>
     ))}
   </StyledSelect>
 )

@@ -3,13 +3,11 @@ import { NavLink } from 'react-router-dom'
 
 const Link = styled(NavLink)`
   color: inherit;
-  margin-left: 0.5em;
-
-  opacity: 0.7;
   text-decoration: none;
+  margin-left: ${({ theme }) => theme.spacing[2]};
 
   &.active {
-    opacity: 1;
+    color: ${({ theme }) => theme.color[3]};
     text-decoration: underline;
   }
 `

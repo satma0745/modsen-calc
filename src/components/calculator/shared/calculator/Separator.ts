@@ -5,9 +5,9 @@ interface Props {
 }
 
 const Separator = styled.div<Props>`
-  margin: ${({ kind }) => (kind === 'vertical' ? '0 0.5em' : '0.5em 0')};
+  margin: ${({ kind, theme }) => (kind === 'vertical' ? `0 ${theme.spacing[1]}` : `${theme.spacing[1]} 0`)};
   ${({ kind }) => (kind === 'vertical' ? 'width' : 'height')}: 1px;
-  background-color: ${({ theme }) => theme.calculator.borderColor};
+  background-color: ${({ theme }) => theme.color[1]};
 `
 
 export default Separator
